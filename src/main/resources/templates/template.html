@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <title th:text="${pageTitle} + ' | ' + ${applicationName}">Title</title>
+</head>
+<body>
+<nav class="navbar bg-white shadow mb-5" th:fragment="navbar">
+    <div class="container bg-white">
+        <div><a href="/"><img alt="Application logotype" src="/images/globe.svg" title="Web Shared Folder"
+                              width="24"></a></div>
+        <ul class="nav nav-underline">
+            <li class="nav-item"><a class="nav-link text-dark" href="/"
+                                    th:class="${activePage == 'dashboard'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Dashboard</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/bookmarks"
+                                    th:class="${activePage == 'bookmarks'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Bookmarks</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/folders"
+                                    th:class="${activePage == 'folders'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Folders</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/users"
+                                    th:class="${activePage == 'users'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Users</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/groups"
+                                    th:class="${activePage == 'groups'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Groups</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/search"
+                                    th:class="${activePage == 'search'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Search</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-dark" href="/help"
+                                    th:class="${activePage == 'help'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Help</a>
+            </li>
+        </ul>
+        <div class="flex-shrink-0 dropdown">
+            <a aria-expanded="false" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+               data-bs-toggle="dropdown" href="#">
+                <img alt="mdo" class="rounded-circle" height="24" src="/images/person-circle.svg"
+                     width="24">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                <li class="m-3 p-0"><strong>User Name</strong><br>u.name@domain.com</li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main></main>
+
+<footer class="py-3 my-4 border-top border-1 border-secondary-subtle" th:fragment="footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <div class="col text-body-secondary small"
+             th:text="${applicationName} + ' ' + ${applicationVersion} + ', ' + ${applicationLicence}">
+            Web Shared Folder
+        </div>
+        <div class="col text-end"><a href="#" th:href="${applicationUrl}"><img
+                alt="source" height="16" src="/images/github.svg" width="16"></a></div>
+    </div>
+</footer>
+</body>
+</html>
