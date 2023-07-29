@@ -42,7 +42,7 @@
                      width="24">
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-                <li class="m-3 p-0"><strong>User Name</strong><br>u.name@domain.com</li>
+                <li class="m-3 p-0"><strong th:text="${user.firstName} + '&nbsp;' + ${user.lastName}">User Name</strong><br><span th:text="${user.username}">u.name@domain.com</span></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
@@ -51,7 +51,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="#" th:href="@{/logout}">Sign out</a></li>
             </ul>
         </div>
     </div>
