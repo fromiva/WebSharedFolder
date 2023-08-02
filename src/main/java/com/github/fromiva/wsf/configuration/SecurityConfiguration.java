@@ -2,9 +2,9 @@ package com.github.fromiva.wsf.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,13 +26,28 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         return http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/css/**", "/js/**").permitAll())
+                        req.requestMatchers("/css/**", "/js/**", "/images/favicon.ico").permitAll())
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/images/**").fullyAuthenticated())
+                        req.requestMatchers("/user/login").permitAll())
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/**").fullyAuthenticated())
-                .formLogin(Customizer.withDefaults())
+                        req.requestMatchers("/images/**").authenticated())
+                .authorizeHttpRequests(req ->
+                        req.anyRequest().authenticated())
+                .formLogin(req -> req
+                        .loginPage("/user/login")
+                        .loginProcessingUrl("/user/login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/user/login?error")
+                        .usernameParameter("email")
+                        .passwordParameter("password"))
+                .logout(req -> req
+                        .logoutUrl("/user/logout")
+                        .logoutSuccessUrl("/user/login?logout")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID"))
                 .build();
     }
 

@@ -1,16 +1,17 @@
 package com.github.fromiva.wsf.filter;
 
-import com.github.fromiva.wsf.model.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Set;
+
+import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
 /**
  * Servlet filter to provide information about current authenticated user,
@@ -33,8 +34,14 @@ public class UserFilter extends HttpFilter {
     protected void doFilter(final HttpServletRequest request,
                             final HttpServletResponse response,
                             final FilterChain chain) throws ServletException, IOException {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        request.setAttribute("user", user);
+        if (!facelessUrl(request.getRequestURI())) {
+            request.setAttribute("user", getContext().getAuthentication().getPrincipal());
+        }
         chain.doFilter(request, response);
+    }
+
+    private boolean facelessUrl(final String url) {
+        Set<String> faceless = Set.of("/css/", "/js/", "/images/", "/user/login");
+        return faceless.stream().anyMatch(url::startsWith);
     }
 }

@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="/css/bootstrap.css" rel="stylesheet">
     <script src="/js/bootstrap.bundle.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title th:text="${pageTitle} + ' | ' + ${applicationName}">Title</title>
 </head>
 <body>
@@ -51,11 +52,18 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#" th:href="@{/logout}">Sign out</a></li>
+                <li><a class="dropdown-item" href="#" th:href="@{/user/logout}">Sign out</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+<div class="my-3" th:fragment="alert">
+    <div class="alert alert-info" role="alert" th:if="${alertInfo}" th:text="${alertInfo}">A simple info alert—check it out!</div>
+    <div class="alert alert-success" role="alert" th:if="${alertSuccess}" th:text="${alertSuccess}">A simple success alert—check it out!</div>
+    <div class="alert alert-warning" role="alert" th:if="${alertWarning}" th:text="${alertWarning}">A simple warning alert—check it out!</div>
+    <div class="alert alert-danger" role="alert" th:if="${alertDanger}" th:text="${alertDanger}">A simple danger alert—check it out!</div>
+</div>
 
 <main></main>
 
