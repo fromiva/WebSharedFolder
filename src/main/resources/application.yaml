@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Web Shared Folder
+    version: 0.0.1-SNAPSHOT
+    licence: GPLv3
+    url: https://github.com/fromiva/WebSharedFolder
+  profiles:
+    default: prod
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+  jpa:
+    database-platform: org.hibernate.dialect.HSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-main.yaml

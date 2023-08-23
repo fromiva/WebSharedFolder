@@ -54,14 +54,14 @@ public interface UserService extends UserDetailsService {
      * @param user entity to save
      * @return original {@code user} object with the actual ID
      */
-    Optional<User> save(User user);
+    User save(User user);
 
     /**
      * Updates a {@code User} in the repository.
      * @param user entity to update
      * @return {@code true} if success or {@code false} otherwise
      */
-    boolean update(User user);
+    User update(User user);
 
     /**
      * Removes a {@code User} with provided ID from the repository.

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: 001-ddl-create-users-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      # Insert stub users. For dev context only
+      file: 002-dml-insert-into-users-table.yaml
+      relativeToChangelogFile: true
+      context: dev

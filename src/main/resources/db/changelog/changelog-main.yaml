@@ -1,0 +1,5 @@
+databaseChangeLog:
+  # Changelog for application versions: 0.x
+  - include:
+      file: changelog-0/000-changelog-main.yaml
+      relativeToChangelogFile: true

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:file:db/devdb
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+  liquibase:
+    drop-first: true
+    contexts: dev
+
+logging:
+  level:
+    root: info
+    sql: debug
+    web: info
+    org.hibernate: debug
+    com.github.fromiva: trace

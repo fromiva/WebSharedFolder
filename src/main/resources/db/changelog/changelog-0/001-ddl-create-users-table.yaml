@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fromiva (Sergei Ivanov)
+      changes:
+        - createTable:
+            tableName: USERS
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  autoIncrement: true
+                  startWith: 1
+                  incrementBy: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: EMAIL
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: PASSWORD
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: FIRST_NAME
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: MIDDLE_NAME
+                  type: varchar(64)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: LAST_NAME
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ACCOUNT_NON_EXPIRED
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ACCOUNT_NON_LOCKED
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CREDENTIAL_NON_EXPIRED
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ENABLED
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false

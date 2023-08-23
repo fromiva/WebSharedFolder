@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:file:db/proddb
+    username: sa
+    password:
+  liquibase:
+    drop-first: false
+    contexts: prod
+
+logging:
+  level:
+    root: info
