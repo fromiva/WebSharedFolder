@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController extends AbstractController {
-    /**
-     * Web page title.
-     */
+
+    /** Web page title. */
     private final String page = "login";
 
     /**
-     * Returns login form html page.
+     * Configs MVC attributes and returns template name.
      * @param model Spring Web MVC utility class
      * @return page template name
      */

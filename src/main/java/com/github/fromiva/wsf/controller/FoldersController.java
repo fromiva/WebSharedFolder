@@ -8,9 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/folders")
 public class FoldersController extends AbstractController {
+
+    /** Web page title. */
     private final String page = "folders";
+
+    /**
+     * Configs MVC attributes and returns template name.
+     * @param model Spring Web MVC utility class
+     * @return page template name
+     */
     @GetMapping
-    public String getFoldersPage(Model model) {
+    public String getFoldersPage(final Model model) {
         addTemplateParameters(model, page);
         return page;
     }

@@ -4,16 +4,29 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 
 public abstract class AbstractController {
+
+    /** Application name from configuration file. */
     @Value("${spring.application.name}")
     private String applicationName;
+
+    /** Application version from configuration file. */
     @Value("${spring.application.version}")
     private String applicationVersion;
+
+    /** Application licence name from configuration file. */
     @Value("${spring.application.licence}")
     private String applicationLicence;
+
+    /** Application URL from configuration file. */
     @Value("${spring.application.url}")
     private String applicationUrl;
 
-    void addTemplateParameters(Model model, String page) {
+    /**
+     * Adds template parameters to the Model.
+     * @param model Spring MVC utility object
+     * @param page request page name
+     */
+    void addTemplateParameters(final Model model, final String page) {
         model.addAttribute("applicationName", applicationName);
         model.addAttribute("applicationVersion", applicationVersion);
         model.addAttribute("applicationLicence", applicationLicence);

@@ -3,11 +3,16 @@ package com.github.fromiva.wsf;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @SpringBootApplication
 public class WebSharedFolderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebSharedFolderApplication.class, args);
-	}
+    /**
+     * Application entry point.
+     * @param args array of the command line arguments
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(WebSharedFolderApplication.class, args);
+    }
 
 }

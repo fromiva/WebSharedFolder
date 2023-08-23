@@ -8,9 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class DashboardController extends AbstractController {
+
+    /** Web page title. */
     private final String page = "dashboard";
+
+    /**
+     * Configs MVC attributes and returns template name.
+     * @param model Spring Web MVC utility class
+     * @return page template name
+     */
     @GetMapping
-    public String getDashboardPage(Model model) {
+    public String getDashboardPage(final Model model) {
         addTemplateParameters(model, page);
         return page;
     }
