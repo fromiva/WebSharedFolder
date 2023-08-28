@@ -1,9 +1,12 @@
-spring:
+wsf:
   application:
     name: Web Shared Folder
     version: 0.0.1-SNAPSHOT
-    licence: GPLv3
+    license: GPLv3
     url: https://github.com/fromiva/WebSharedFolder
+spring:
+  application:
+    name: ${wsf.application.name}
   profiles:
     default: production
   datasource:

@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/help")
-public class HelpController {
+@RequestMapping("/")
+public class IndexController {
 
     /**
-     * Returns template name.
-     * @return page template name
+     * Redirects request to default page.
+     * @return redirection rule
      */
     @GetMapping
-    public String getHelpPage() {
-        return "help";
+    public String getDashboardPage() {
+        return "redirect:dashboard";
     }
 }

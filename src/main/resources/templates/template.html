@@ -6,7 +6,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <script src="/js/bootstrap.bundle.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <title th:text="${pageTitle} + ' | ' + ${applicationName}">Title</title>
+    <title th:text="${page} + ' | ' + ${app.name}">Title</title>
 </head>
 <body>
 <nav class="navbar bg-white shadow mb-5" th:fragment="navbar">
@@ -15,25 +15,25 @@
                               width="24"></a></div>
         <ul class="nav nav-underline">
             <li class="nav-item"><a class="nav-link text-dark" href="/"
-                                    th:class="${activePage == 'dashboard'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Dashboard</a>
+                                    th:class="${page == 'Dashboard'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Dashboard</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/bookmarks"
-                                    th:class="${activePage == 'bookmarks'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Bookmarks</a>
+                                    th:class="${page == 'Bookmarks'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Bookmarks</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/folders"
-                                    th:class="${activePage == 'folders'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Folders</a>
+                                    th:class="${page == 'Folders'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Folders</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/users"
-                                    th:class="${activePage == 'users'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Users</a>
+                                    th:class="${page == 'Users'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Users</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/groups"
-                                    th:class="${activePage == 'groups'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Groups</a>
+                                    th:class="${page == 'Groups'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Groups</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/search"
-                                    th:class="${activePage == 'search'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Search</a>
+                                    th:class="${page == 'Search'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Search</a>
             </li>
             <li class="nav-item"><a class="nav-link text-dark" href="/help"
-                                    th:class="${activePage == 'help'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Help</a>
+                                    th:class="${page == 'Help'} ? 'nav-link text-dark active' : 'nav-link text-dark'">Help</a>
             </li>
         </ul>
         <div class="flex-shrink-0 dropdown">
@@ -70,10 +70,10 @@
 <footer class="py-3 my-4 border-top border-1 border-secondary-subtle" th:fragment="footer">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
         <div class="col text-body-secondary small"
-             th:text="${applicationName} + ' ' + ${applicationVersion} + ', ' + ${applicationLicence}">
+             th:text="${app.name} + ' ' + ${app.version} + ', ' + ${app.license}">
             Web Shared Folder
         </div>
-        <div class="col text-end"><a href="#" th:href="${applicationUrl}"><img
+        <div class="col text-end"><a href="#" th:href="${app.url}"><img
                 alt="source" height="16" src="/images/github.svg" width="16"></a></div>
     </div>
 </footer>

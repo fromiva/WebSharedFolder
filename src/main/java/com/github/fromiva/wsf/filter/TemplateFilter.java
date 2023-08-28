@@ -1,10 +1,12 @@
 package com.github.fromiva.wsf.filter;
 
+import com.github.fromiva.wsf.configuration.ApplicationInfo;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +21,11 @@ import static org.springframework.security.core.context.SecurityContextHolder.ge
  */
 @Component
 @Order(1)
-public class UserFilter extends HttpFilter {
+@RequiredArgsConstructor
+public class TemplateFilter extends HttpFilter {
+
+    /** In-memory basic application information holder. */
+    private final ApplicationInfo applicationInfo;
 
     /**
      * Adds information about current authenticated user to servlet request.
@@ -34,14 +40,17 @@ public class UserFilter extends HttpFilter {
     protected void doFilter(final HttpServletRequest request,
                             final HttpServletResponse response,
                             final FilterChain chain) throws ServletException, IOException {
-        if (!facelessUrl(request.getRequestURI())) {
+        String uri = request.getRequestURI();
+        if (!facelessUrl(uri)) {
+            request.setAttribute("page", uri.substring(1, 2).toUpperCase() + uri.substring(2));
             request.setAttribute("user", getContext().getAuthentication().getPrincipal());
         }
+        request.setAttribute("app", applicationInfo);
         chain.doFilter(request, response);
     }
 
     private boolean facelessUrl(final String url) {
         Set<String> faceless = Set.of("/css/", "/js/", "/images/", "/user/login");
-        return faceless.stream().anyMatch(url::startsWith);
+        return "/".equals(url) || faceless.stream().anyMatch(url::startsWith);
     }
 }

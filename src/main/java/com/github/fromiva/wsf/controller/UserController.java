@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends AbstractController {
-
-    /** Web page title. */
-    private final String page = "login";
+public class UserController {
 
     /**
      * Configs MVC attributes and returns template name.
@@ -19,7 +16,7 @@ public class UserController extends AbstractController {
      */
     @GetMapping("login")
     public String getLogin(final Model model) {
-        addTemplateParameters(model, page);
+        model.addAttribute("page", "Login");
         return "login";
     }
 }
