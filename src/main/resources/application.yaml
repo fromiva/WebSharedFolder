@@ -5,7 +5,7 @@ spring:
     licence: GPLv3
     url: https://github.com/fromiva/WebSharedFolder
   profiles:
-    default: prod
+    default: production
   datasource:
     driver-class-name: org.hsqldb.jdbc.JDBCDriver
   jpa:
@@ -15,4 +15,6 @@ spring:
     show-sql: false
   liquibase:
     enabled: true
+    drop-first: false
     change-log: classpath:db/changelog/changelog-main.yaml
+    contexts: ${spring.profiles.active}

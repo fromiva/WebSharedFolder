@@ -1,13 +1,12 @@
 spring:
   datasource:
-    url: jdbc:hsqldb:file:db/devdb
+    url: jdbc:hsqldb:file:data/data-dev
     username: sa
     password:
   jpa:
     show-sql: true
   liquibase:
     drop-first: true
-    contexts: dev
 
 logging:
   level:

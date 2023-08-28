@@ -1,11 +1,8 @@
 spring:
   datasource:
-    url: jdbc:hsqldb:file:db/proddb
+    url: jdbc:hsqldb:file:data/data
     username: sa
     password:
-  liquibase:
-    drop-first: false
-    contexts: prod
 
 logging:
   level:
