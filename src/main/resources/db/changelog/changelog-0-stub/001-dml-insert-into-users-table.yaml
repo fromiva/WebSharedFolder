@@ -14,7 +14,7 @@ databaseChangeLog:
                   value: "{noop}password"
               - column:
                   name: FIRST_NAME
-                  value: Stub
+                  value: Example
               - column:
                   name: LAST_NAME
                   value: Owner
@@ -41,7 +41,7 @@ databaseChangeLog:
                   value: "{noop}password"
               - column:
                   name: FIRST_NAME
-                  value: Stub
+                  value: Example
               - column:
                   name: LAST_NAME
                   value: Admin
@@ -68,7 +68,7 @@ databaseChangeLog:
                   value: "{noop}password"
               - column:
                   name: FIRST_NAME
-                  value: Stub
+                  value: Example
               - column:
                   name: MIDDLE_NAME
                   value: Mid.

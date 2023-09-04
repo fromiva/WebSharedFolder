@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 class UserRepositoryTest {
@@ -30,15 +30,13 @@ class UserRepositoryTest {
                 true, true, true, true);
         User expected = userRepository.save(user);
         Optional<User> actual = userRepository.findByEmail(expected.getEmail());
-        assertEquals(Optional.of(expected), actual);
+        assertThat(Optional.of(expected)).usingRecursiveComparison().isEqualTo(actual);
     }
 
     @Test
     void findByEmailWhenNotExistsThenEmptyOptional() {
         String email = "user@example.com";
-        Optional<User> expected = Optional.empty();
-        Optional<User> actual = userRepository.findByEmail(email);
-        assertEquals(expected, actual);
+        assertThat(userRepository.findByEmail(email)).isEmpty();
     }
 
     @Test
@@ -48,16 +46,12 @@ class UserRepositoryTest {
                 "Stub", null, "User",
                 true, true, true, true);
         user = userRepository.save(user);
-        boolean expected = true;
-        boolean actual = userRepository.existsByEmail(user.getEmail());
-        assertEquals(expected, actual);
+        assertThat(userRepository.existsByEmail(user.getEmail())).isTrue();
     }
 
     @Test
     void existsByEmailWhenNotExistsThenFalse() {
         String email = "user@example.com";
-        boolean expected = false;
-        boolean actual = userRepository.existsByEmail(email);
-        assertEquals(expected, actual);
+        assertThat(userRepository.existsByEmail(email)).isFalse();
     }
 }

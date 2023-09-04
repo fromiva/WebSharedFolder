@@ -11,7 +11,7 @@ spring:
 logging:
   level:
     root: info
-    sql: debug
+    sql: info
     web: info
-    org.hibernate: debug
+    org.hibernate: info
     com.github.fromiva: trace

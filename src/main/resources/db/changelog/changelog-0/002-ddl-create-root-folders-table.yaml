@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fromiva (Sergei Ivanov)
+      changes:
+        - createTable:
+            tableName: ROOT_FOLDERS
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  startWith: 1
+                  incrementBy: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: PATH
+                  type: VARCHAR(4096)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: LIMIT
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    unique: false
+              - column:
+                  name: DESCRIPTION
+                  type: VARCHAR(4096)
+                  constraints:
+                    nullable: true
+                    unique: false
+              - column:
+                  name: USER_ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    unique: false
+                    foreignKeyName: USER_ID_REFERENCE
+                    referencedTableName: USERS
+                    referencedColumnNames: ID

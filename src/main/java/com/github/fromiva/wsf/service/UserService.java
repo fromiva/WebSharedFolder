@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface UserService extends UserDetailsService {
 
     /**
-     * Returns number of the entities in the repository.
-     * @return number of the entities
+     * Returns number of all the entities in the repository.
+     * @return number of all the entities
      */
     long count();
 

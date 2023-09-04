@@ -11,14 +11,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * Search User by email.
      * @param email email to search
-     * @return optional with User if found, empty optional otherwise.
+     * @return optional with User if found, empty optional otherwise
      */
     Optional<User> findByEmail(String email);
 
     /**
      * Checks that User with provided email actually exist.
-     * @param email email to search
-     * @return {@code true} if user exists, {@code false} otherwise
+     * @param email email to check
+     * @return {@code true} if User exists, {@code false} otherwise
      */
     boolean existsByEmail(String email);
 }

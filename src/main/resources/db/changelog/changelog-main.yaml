@@ -1,5 +1,11 @@
 databaseChangeLog:
   # Changelog for application versions: 0.x
   - include:
-      file: changelog-0/000-changelog-main.yaml
+      file: changelog-0/000-changelog.yaml
       relativeToChangelogFile: true
+  # Stub data changelog for application versions: 0.x
+  # For 'development' context only
+  - include:
+      file: changelog-0-stub/000-changelog-stub-data.yaml
+      relativeToChangelogFile: true
+      context: development

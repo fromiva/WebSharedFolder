@@ -13,6 +13,7 @@ spring:
     driver-class-name: org.hsqldb.jdbc.JDBCDriver
   jpa:
     database-platform: org.hibernate.dialect.HSQLDialect
+    open-in-view: false
     hibernate:
       ddl-auto: validate
     show-sql: false
