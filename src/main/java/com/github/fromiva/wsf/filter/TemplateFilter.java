@@ -42,7 +42,9 @@ public class TemplateFilter extends HttpFilter {
                             final FilterChain chain) throws ServletException, IOException {
         String uri = request.getRequestURI();
         if (!facelessUrl(uri)) {
-            request.setAttribute("page", uri.substring(1, 2).toUpperCase() + uri.substring(2));
+            String segment = uri.split("/")[1];
+            request.setAttribute("page",
+                    segment.substring(0, 1).toUpperCase() + segment.substring(1));
             request.setAttribute("user", getContext().getAuthentication().getPrincipal());
         }
         request.setAttribute("app", applicationInfo);

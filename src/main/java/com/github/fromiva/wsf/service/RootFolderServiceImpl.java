@@ -2,11 +2,11 @@ package com.github.fromiva.wsf.service;
 
 import com.github.fromiva.wsf.model.RootFolder;
 import com.github.fromiva.wsf.repository.RootFolderRepository;
+import com.github.fromiva.wsf.util.ElementNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /** Implementation class to handle {@code RootFolder} specific business logic. */
 @Service
@@ -42,25 +42,28 @@ public class RootFolderServiceImpl implements RootFolderService {
 
     /** {@inheritDoc} */
     @Override
-    public Optional<RootFolder> findById(final Long id) {
-        return rootFolderRepository.findById(id);
+    public RootFolder getById(final Long id) throws ElementNotFoundException {
+        return rootFolderRepository.findById(id).orElseThrow(() -> new ElementNotFoundException(
+                "Root folder with ID " + id + " not found."));
     }
 
     /** {@inheritDoc} */
     @Override
-    public Optional<RootFolder> findByName(final String name) {
-        return rootFolderRepository.findByName(name);
+    public RootFolder getByName(final String name) throws ElementNotFoundException {
+        return rootFolderRepository.findByName(name).orElseThrow(() -> new ElementNotFoundException(
+                "Root folder with name '" + name + "' not found."));
     }
 
     /** {@inheritDoc} */
     @Override
-    public Optional<RootFolder> findByPath(final String path) {
-        return rootFolderRepository.findByPath(path);
+    public RootFolder getByPath(final String path) throws ElementNotFoundException {
+        return rootFolderRepository.findByPath(path).orElseThrow(() -> new ElementNotFoundException(
+                "Root folder with path '" + path + "' not found."));
     }
 
     /** {@inheritDoc} */
     @Override
-    public List<RootFolder> findAll() {
+    public List<RootFolder> getAll() {
         return rootFolderRepository.findAll();
     }
 

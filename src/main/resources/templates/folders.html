@@ -4,7 +4,49 @@
 <body>
 <nav th:replace="~{template :: navbar}"></nav>
 
-<main class="container"></main>
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{'~/folders'}" th:text="Folders">Item</a>
+            </li>
+            <li th:each="crumb : ${breadcrumbs}" class="breadcrumb-item">
+                <a th:text="${crumb.title()}" th:href="@{'~/folders'+${crumb.url()}}">Item</a>
+            </li>
+        </ol>
+    </nav>
+
+    <table th:if="${items.size()} > 0" class="table table-hover table-sm mb-4">
+        <thead class="table-light">
+        <tr>
+            <th scope="col" style="width: 35px;"></th>
+            <th scope="col">Name</th>
+            <th scope="col" style="width: 100px;">Type</th>
+            <th scope="col" style="width: 35px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td>
+                <img th:if="${item.directory}" src="/images/icons/files/folder2.svg" alt=""/>
+                <img th:if="${item.file}" src="/images/icons/files/file-earmark.svg" alt=""/>
+            </td>
+            <td>
+                <a th:if="${item.directory}" th:text="${item.name()}" th:href="@{'~/folders/'+${item.url()}}">Item name</a>
+                <span th:if="${item.file}" th:text="${item.name()}"></span>
+            </td>
+            <td>
+                <img th:if="${item.symlink}" src="/images/icons/files/link-45deg.svg" alt="Symlink"/>
+                <span th:if="${item.directory}">folder</span>
+                <span th:if="${item.file}" th:text="${item.extension()}"></span>
+            </td>
+            <td><img src="/images/icons/three-dots-vertical.svg" alt=""/></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
 
 <footer th:replace="~{template :: footer}"></footer>
 </body>

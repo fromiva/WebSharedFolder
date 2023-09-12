@@ -1,13 +1,16 @@
 package com.github.fromiva.wsf.util;
 
-import java.io.File;
+import org.springframework.stereotype.Component;
+
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.file.FileSystems;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@Component
 public final class PathToUrlEncoder implements Encoder<String, String> {
 
     /** The system-dependent file name separator character, represented as a string. */
@@ -18,18 +21,17 @@ public final class PathToUrlEncoder implements Encoder<String, String> {
 
     /** Constructor with the system-dependent default separator characters. */
     public PathToUrlEncoder() {
-        filePathSeparator = File.separator;
+        filePathSeparator = FileSystems.getDefault().getSeparator();
         urlPathSeparator = "/";
     }
 
 
     /**
-     * Constructor with specified separator characters.
+     * Constructor with specified separator characters. For cross-platform testing only.
      * @param filePathSeparator system-dependent file system name separator character
      * @param urlPathSeparator URL name separator character
      */
-    public PathToUrlEncoder(final String filePathSeparator,
-                            final String urlPathSeparator) {
+    PathToUrlEncoder(final String filePathSeparator, final String urlPathSeparator) {
         this.filePathSeparator = filePathSeparator;
         this.urlPathSeparator = urlPathSeparator;
     }

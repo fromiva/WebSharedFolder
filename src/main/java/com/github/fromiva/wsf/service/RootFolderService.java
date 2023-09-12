@@ -1,9 +1,9 @@
 package com.github.fromiva.wsf.service;
 
 import com.github.fromiva.wsf.model.RootFolder;
+import com.github.fromiva.wsf.util.ElementNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 /** Interface to handle {@code RootFolder} specific business logic. */
 public interface RootFolderService {
@@ -37,30 +37,33 @@ public interface RootFolderService {
 
     /**
      * Finds for the {@code RootFolder} with provided ID in the repository.
-     * @param id ID of the {@code RootFolder} to search
-     * @return {@code Optional} with search result or empty {@code Optional} if nothing found
+     * @param id ID of the {@code RootFolder} to get
+     * @return {@code RootFolder} with provided ID
+     * @throws ElementNotFoundException if {@code RootFolder} with provided ID doesn't exist
      */
-    Optional<RootFolder> findById(Long id);
+    RootFolder getById(Long id) throws ElementNotFoundException;
 
     /**
      * Finds for the {@code RootFolder} with provided name in the repository.
-     * @param name of the {@code RootFolder} to search
-     * @return {@code Optional} with the search result or empty {@code Optional} if nothing found
+     * @param name of the {@code RootFolder} to get
+     * @return {@code RootFolder} with provided name
+     * @throws ElementNotFoundException if {@code RootFolder} with provided name doesn't exist
      */
-    Optional<RootFolder> findByName(String name);
+    RootFolder getByName(String name) throws ElementNotFoundException;
 
     /**
      * Finds for the {@code RootFolder} with provided path in the repository.
-     * @param path of the {@code RootFolder} to search
-     * @return {@code Optional} with the search result or empty {@code Optional} if nothing found
+     * @param path of the {@code RootFolder} to get
+     * @return {@code RootFolder} with provided path
+     * @throws ElementNotFoundException if {@code RootFolder} with provided path doesn't exist
      */
-    Optional<RootFolder> findByPath(String path);
+    RootFolder getByPath(String path) throws ElementNotFoundException;
 
     /**
      * Finds for all the RootFolders in the repository.
      * @return {@code List} with the search result or empty {@code List} if nothing found
      */
-    List<RootFolder> findAll();
+    List<RootFolder> getAll();
 
     /**
      * Saves a {@code RootFolder} in the repository.
