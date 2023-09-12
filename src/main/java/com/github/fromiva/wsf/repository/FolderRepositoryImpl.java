@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,6 +19,9 @@ public class FolderRepositoryImpl implements FolderRepository {
 
     /** Path data transfer object mapper to prepare information about folder content. */
     private final PathDtoMapper pathDtoMapper;
+
+    /** Delegating path comparator. */
+    private final Comparator<Path> comparator;
 
     /** {@inheritDoc} */
     @Override
@@ -31,7 +35,7 @@ public class FolderRepositoryImpl implements FolderRepository {
         }
         try (Stream<Path> stream = Files.list(path)) {
             return stream
-                    .sorted()
+                    .sorted(comparator)
                     .map(item -> pathDtoMapper.toDto(item, rootAlias, relative))
                     .toList();
         }

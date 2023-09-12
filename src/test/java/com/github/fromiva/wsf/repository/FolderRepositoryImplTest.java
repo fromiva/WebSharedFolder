@@ -2,6 +2,7 @@ package com.github.fromiva.wsf.repository;
 
 import com.github.fromiva.wsf.dto.PathDto;
 import com.github.fromiva.wsf.dto.PathDtoMapper;
+import com.github.fromiva.wsf.util.DelegatingPathComparator;
 import com.github.fromiva.wsf.util.ElementNotFoundException;
 import com.github.fromiva.wsf.util.PathToUrlEncoder;
 import com.google.common.jimfs.Configuration;
@@ -28,7 +29,7 @@ class FolderRepositoryImplTest {
 
     /** Repository under test. */
     private final FolderRepository folderRepository = new FolderRepositoryImpl(
-            new PathDtoMapper(new PathToUrlEncoder()));
+            new PathDtoMapper(new PathToUrlEncoder()), new DelegatingPathComparator());
 
     @Test
     void whenGetNotExistingDirectoryThenException(

@@ -4,6 +4,9 @@ wsf:
     version: 0.0.1-SNAPSHOT
     license: GPLv3
     url: https://github.com/fromiva/WebSharedFolder
+    settings:
+      filesystem:
+        sorting: pathByTypeAscComparator, pathByNameAscComparator
 spring:
   application:
     name: ${wsf.application.name}
