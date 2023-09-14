@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author:  fromiva (Sergei Ivanov)
+      changes:
+        - update:
+            tableName: USERS
+            where: EMAIL='owner@example.com'
+            columns:
+              - column:
+                  name: SECURITY_ROLE
+                  value: ROOT_ADMIN
+        - update:
+            tableName: USERS
+            where: EMAIL='admin@example.com'
+            columns:
+              - column:
+                  name: SECURITY_ROLE
+                  value: ADMIN

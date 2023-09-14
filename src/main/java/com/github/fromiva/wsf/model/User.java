@@ -2,6 +2,8 @@ package com.github.fromiva.wsf.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -96,6 +98,12 @@ public final class User implements UserDetails {
             nullable = false)
     private boolean enabled;
 
+    /** User security role to authorize access to Spring Web MVC controllers. */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SECURITY_ROLE",
+            nullable = false)
+    private UserSecurityRole userSecurityRole;
+
     @Override
     public String getUsername() {
         return email;
@@ -109,6 +117,6 @@ public final class User implements UserDetails {
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Set.of();
+        return Set.of(userSecurityRole);
     }
 }

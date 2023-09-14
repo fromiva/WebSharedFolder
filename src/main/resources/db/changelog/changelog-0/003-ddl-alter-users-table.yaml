@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fromiva (Sergei Ivanov)
+      changes:
+        - addColumn:
+            tableName: USERS
+            columns:
+              - column:
+                  name: SECURITY_ROLE
+                  type: VARCHAR(64)
+                  defaultValue: USER
+                  constraints:
+                    nullable: false

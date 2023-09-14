@@ -34,6 +34,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/images/**").authenticated())
                 .authorizeHttpRequests(req ->
+                        req.requestMatchers("/root", "/root/**").hasRole("ROOT_ADMIN"))
+                .authorizeHttpRequests(req ->
+                        req.requestMatchers("/admin", "/admin/**")
+                                .hasAnyRole("ROOT_ADMIN", "ADMIN"))
+                .authorizeHttpRequests(req ->
                         req.anyRequest().authenticated())
                 .formLogin(req -> req
                         .loginPage("/user/login")

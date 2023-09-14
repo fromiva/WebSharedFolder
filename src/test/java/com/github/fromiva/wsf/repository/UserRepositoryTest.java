@@ -1,6 +1,7 @@
 package com.github.fromiva.wsf.repository;
 
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ class UserRepositoryTest {
         User user = new User(
                 0L, "user@example.com", "{noop}password",
                 "Stub", null, "User",
-                true, true, true, true);
+                true, true, true, true, UserSecurityRole.USER);
         User expected = userRepository.save(user);
         Optional<User> actual = userRepository.findByEmail(expected.getEmail());
         assertThat(Optional.of(expected)).usingRecursiveComparison().isEqualTo(actual);
@@ -44,7 +45,7 @@ class UserRepositoryTest {
         User user = new User(
                 0L, "user@example.com", "{noop}password",
                 "Stub", null, "User",
-                true, true, true, true);
+                true, true, true, true, UserSecurityRole.USER);
         user = userRepository.save(user);
         assertThat(userRepository.existsByEmail(user.getEmail())).isTrue();
     }

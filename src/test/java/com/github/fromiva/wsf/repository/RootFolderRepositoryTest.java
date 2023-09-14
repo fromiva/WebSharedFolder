@@ -2,6 +2,7 @@ package com.github.fromiva.wsf.repository;
 
 import com.github.fromiva.wsf.model.RootFolder;
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ class RootFolderRepositoryTest {
     private static User user = new User(
             0L, "user@example.com", "{noop}password",
             "Stub", null, "User",
-            true, true, true, true);
+            true, true, true, true, UserSecurityRole.USER);
 
     /** {@code User}-specific Spring Data JPA repository. */
     @Autowired
