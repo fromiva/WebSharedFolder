@@ -1,6 +1,7 @@
 package com.github.fromiva.wsf.filter;
 
 import com.github.fromiva.wsf.configuration.ApplicationInfo;
+import com.github.fromiva.wsf.service.SecurityService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;
@@ -13,8 +14,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Set;
 
-import static org.springframework.security.core.context.SecurityContextHolder.getContext;
-
 /**
  * Servlet filter to provide information about current authenticated user,
  * used by Thymeleaf template processor.
@@ -26,6 +25,9 @@ public class TemplateFilter extends HttpFilter {
 
     /** In-memory basic application information holder. */
     private final ApplicationInfo applicationInfo;
+
+    /** Security-specific service to support Spring Security business logic. */
+    private final SecurityService securityService;
 
     /**
      * Adds information about current authenticated user to servlet request.
@@ -45,7 +47,8 @@ public class TemplateFilter extends HttpFilter {
             String segment = uri.split("/")[1];
             request.setAttribute("page",
                     segment.substring(0, 1).toUpperCase() + segment.substring(1));
-            request.setAttribute("user", getContext().getAuthentication().getPrincipal());
+            request.setAttribute("user", securityService.getPrincipalName());
+            request.setAttribute("email", securityService.getPrincipal().getEmail());
         }
         request.setAttribute("app", applicationInfo);
         chain.doFilter(request, response);

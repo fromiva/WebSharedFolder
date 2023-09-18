@@ -43,11 +43,11 @@
                      width="24">
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-                <li class="m-3 p-0"><strong th:text="${user.firstName} + '&nbsp;' + ${user.lastName}">User Name</strong><br><span th:text="${user.username}">u.name@domain.com</span></li>
+                <li class="m-3 p-0"><strong><span th:remove="tag" th:text="${user.firstName}"></span> <span th:remove="tag" th:if="${user.middleName}" th:text="' '+${user.middleName}"></span><span th:remove="tag" th:text="' '+${user.lastName}"></span></strong><br><span th:text="${email}">u.name@domain.com</span></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li>
                     <hr class="dropdown-divider">

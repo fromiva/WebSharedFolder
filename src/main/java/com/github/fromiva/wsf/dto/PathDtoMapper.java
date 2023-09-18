@@ -12,6 +12,7 @@ import java.time.ZoneId;
 
 import static java.time.LocalDateTime.ofInstant;
 
+/** Mapper to support {@code PathDto} data transfer object. */
 @Component
 @AllArgsConstructor
 public final class PathDtoMapper {

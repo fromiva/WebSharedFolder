@@ -1,13 +1,13 @@
 package com.github.fromiva.wsf.service;
 
+import com.github.fromiva.wsf.dto.UserNameDto;
 import com.github.fromiva.wsf.model.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 import java.util.Optional;
 
 /** Interface to handle {@code User} specific business logic. */
-public interface UserService extends UserDetailsService {
+public interface UserService {
 
     /**
      * Returns number of all the entities in the repository.
@@ -59,9 +59,33 @@ public interface UserService extends UserDetailsService {
     /**
      * Updates a {@code User} in the repository.
      * @param user entity to update
-     * @return {@code true} if success or {@code false} otherwise
+     * @return the updated object
      */
     User update(User user);
+
+    /**
+     * Updates a {@code User}'s first name, middle name and last name in the repository.
+     * @param id user id
+     * @param dto data transfer object with information to update
+     * @return {@code true} if success or {@code false} otherwise
+     */
+    boolean updateFullName(Long id, UserNameDto dto);
+
+    /**
+     * Updates a {@code User}'s email in the repository.
+     * @param id user id
+     * @param email new email to update
+     * @return {@code true} if success or {@code false} otherwise
+     */
+    boolean updateEmail(Long id, String email);
+
+    /**
+     * Updates a {@code User}'s email in the repository.
+     * @param id user id
+     * @param password new password to update
+     * @return {@code true} if success or {@code false} otherwise
+     */
+    boolean updatePassword(Long id, String password);
 
     /**
      * Removes a {@code User} with provided ID from the repository.

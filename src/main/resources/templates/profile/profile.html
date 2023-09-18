@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Profile</li>
+        </ol>
+    </nav>
+
+    <table class="table table-hover table-sm mb-4">
+        <thead class="table-light">
+        <tr>
+            <th scope="col" style="width: 50%;"></th>
+            <th scope="col" style="width: 50%;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><b>Full name</b>  <a th:href="@{'~/user/profile/username'}">(edit)</a></td>
+            <td><span th:remove="tag" th:text="${fullName.firstName}"></span> <span th:remove="tag" th:if="${fullName.middleName}" th:text="' '+${fullName.middleName}"></span><span th:remove="tag" th:text="' '+${fullName.lastName}"></span></td>
+        </tr>
+        <tr>
+            <td><b>Email</b>  <a th:href="@{'~/user/profile/email'}">(edit)</a></td>
+            <td th:text="${email}"></td>
+        </tr>
+        <tr>
+            <td><b>Password</b>  <a th:href="@{'~/user/profile/password'}">(edit)</a></td>
+            <td>(hidden)</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>
