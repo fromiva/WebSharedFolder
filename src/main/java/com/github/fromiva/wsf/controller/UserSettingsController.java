@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/user/settings")
+public class UserSettingsController {
 
     /**
-     * Redirects request to default page.
-     * @return redirection rule
+     * Returns template name.
+     * @return page template name
      */
     @GetMapping
-    public String getDashboardPage() {
-        return "redirect:folders";
+    public String getSettings() {
+        return "profile/settings";
     }
 }
