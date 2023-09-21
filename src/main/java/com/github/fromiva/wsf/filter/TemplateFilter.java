@@ -49,6 +49,8 @@ public class TemplateFilter extends HttpFilter {
                     segment.substring(0, 1).toUpperCase() + segment.substring(1));
             request.setAttribute("user", securityService.getPrincipalName());
             request.setAttribute("email", securityService.getPrincipal().getEmail());
+            request.setAttribute("admin", securityService.isPrincipalAnAdmin());
+            request.setAttribute("rootAdmin", securityService.isPrincipalARootAdmin());
         }
         request.setAttribute("app", applicationInfo);
         chain.doFilter(request, response);

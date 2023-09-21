@@ -59,4 +59,16 @@ public interface SecurityService extends UserDetailsService {
      */
     boolean changePrincipalPassword(String newPassword, String oldPassword)
             throws IncorrectPasswordException;
+
+    /**
+     * Checks that the current principal is an admin user.
+     * @return {@code true} if an admin, {@code false} otherwise
+     */
+    boolean isPrincipalAnAdmin();
+
+    /**
+     * Checks that the current principal is a root admin user.
+     * @return {@code true} if a root admin, {@code false} otherwise
+     */
+    boolean isPrincipalARootAdmin();
 }

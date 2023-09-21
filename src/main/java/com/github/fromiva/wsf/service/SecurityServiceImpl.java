@@ -3,6 +3,7 @@ package com.github.fromiva.wsf.service;
 import com.github.fromiva.wsf.dto.UserNameDto;
 import com.github.fromiva.wsf.dto.UserNameDtoMapper;
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import com.github.fromiva.wsf.util.IncorrectPasswordException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -93,5 +94,19 @@ public class SecurityServiceImpl implements SecurityService {
                 .updatePassword(getPrincipalId(), passwordEncoder.encode(newPassword));
         refreshPrincipal();
         return result;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isPrincipalAnAdmin() {
+        UserSecurityRole role = getPrincipal().getUserSecurityRole();
+        return role == UserSecurityRole.ROOT_ADMIN || role == UserSecurityRole.ADMIN;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isPrincipalARootAdmin() {
+        UserSecurityRole role = getPrincipal().getUserSecurityRole();
+        return role == UserSecurityRole.ROOT_ADMIN;
     }
 }
