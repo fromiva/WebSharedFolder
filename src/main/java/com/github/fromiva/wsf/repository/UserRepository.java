@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /** Interface to provide access to {@code User} specific repository. */
@@ -25,6 +26,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return {@code true} if User exists, {@code false} otherwise
      */
     boolean existsByEmail(String email);
+
+    /**
+     * Find all the active users (that enabled, not blocked and not expired).
+     * @return list of all the active users or empty list if nothing found
+     */
+    @Transactional(readOnly = true)
+    @Query("select u from User as u where"
+            + " u.accountNonExpired = true"
+            + " and u.accountNonLocked = true"
+            + " and u.credentialsNonExpired = true"
+            + " and u.enabled = true")
+    List<User> findAllActive();
 
     /**
      * Updates the full name of the user with provided ID.

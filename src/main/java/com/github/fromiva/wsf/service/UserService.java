@@ -50,6 +50,12 @@ public interface UserService {
     List<User> findAll();
 
     /**
+     * Finds for all the users in the repository that enabled, not blocked and not expired.
+     * @return {@code List} with the search result or empty {@code List} if nothing found
+     */
+    List<User> findAllActive();
+
+    /**
      * Saves a {@code User} in the repository.
      * @param user entity to save
      * @return original {@code user} object with the actual ID

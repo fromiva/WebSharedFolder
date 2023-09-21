@@ -55,6 +55,12 @@ public class UserServiceImpl implements UserService {
 
     /** {@inheritDoc} */
     @Override
+    public List<User> findAllActive() {
+        return userRepository.findAllActive();
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public User save(final User user) {
         return userRepository.save(user);
     }
