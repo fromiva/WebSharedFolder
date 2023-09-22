@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/css/**", "/js/**", "/images/favicon.ico").permitAll())
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/users/login").permitAll())
+                        req.requestMatchers("/users/login", "/users/signup").permitAll())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/images/**").authenticated())
                 .authorizeHttpRequests(req ->

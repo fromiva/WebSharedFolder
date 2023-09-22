@@ -104,7 +104,7 @@ public class UserProfileController {
     }
 
     /**
-     * Handles request ro change password of the current principal (logged-in user).
+     * Handles request to change password of the current principal (logged-in user).
      * @param model Spring Web MVC utility class
      * @param redirectAttributes Spring Web MVC utility class
      * @param newPassword1 new user password from edit form

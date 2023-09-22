@@ -57,7 +57,7 @@ public class TemplateFilter extends HttpFilter {
     }
 
     private boolean facelessUrl(final String url) {
-        Set<String> faceless = Set.of("/css/", "/js/", "/images/", "/users/login");
+        Set<String> faceless = Set.of("/css/", "/js/", "/images/", "/users/login", "/users/signup");
         return "/".equals(url) || faceless.stream().anyMatch(url::startsWith);
     }
 }

@@ -71,4 +71,18 @@ public interface SecurityService extends UserDetailsService {
      * @return {@code true} if a root admin, {@code false} otherwise
      */
     boolean isPrincipalARootAdmin();
+
+    /**
+     * Creates a new user account with USER security rile.
+     * @param firstName user's first name
+     * @param middleName user's middle name
+     * @param lastName user's last name
+     * @param email user's email
+     * @param password user's password
+     */
+    void createNewUser(String firstName,
+                       String middleName,
+                       String lastName,
+                       String email,
+                       String password);
 }

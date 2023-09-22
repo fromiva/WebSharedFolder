@@ -109,4 +109,19 @@ public class SecurityServiceImpl implements SecurityService {
         UserSecurityRole role = getPrincipal().getUserSecurityRole();
         return role == UserSecurityRole.ROOT_ADMIN;
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void createNewUser(final String firstName,
+                              final String middleName,
+                              final String lastName,
+                              final String email,
+                              final String password) {
+        User user = new User(
+                0L, email, passwordEncoder.encode(password),
+                firstName, middleName, lastName,
+                true, true, true, true,
+                UserSecurityRole.USER);
+        userService.save(user);
+    }
 }
