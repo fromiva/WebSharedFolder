@@ -1,10 +1,10 @@
 package com.github.fromiva.wsf.service;
 
+import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import com.github.fromiva.wsf.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,15 +50,20 @@ public class UserServiceImpl implements UserService {
 
     /** {@inheritDoc} */
     @Override
-    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        return findByUsername(username).orElseThrow(() ->
-                new UsernameNotFoundException(String.format("User \"%s\" not found", username)));
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     /** {@inheritDoc} */
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<User> findAllActive() {
+        return userRepository.findAllActive();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public List<User> findAllByUserSecurityRole(final UserSecurityRole role) {
+        return userRepository.findAllByUserSecurityRole(role);
     }
 
     /** {@inheritDoc} */
@@ -71,6 +76,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(final User user) {
         return userRepository.save(user);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean updateFullName(final Long id, final UserInfoDto dto) {
+        return userRepository.updateFullName(id,
+                dto.firstName(), dto.middleName(), dto.lastName()) > 0;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean updateEmail(final Long id, final String email) {
+        return userRepository.updateEmail(id, email) > 0;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean updatePassword(final Long id, final String password) {
+        return userRepository.updatePassword(id, password) > 0;
     }
 
     /** {@inheritDoc} */

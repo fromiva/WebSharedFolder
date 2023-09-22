@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{'~/users/profile'}">Profile</a></li>
+            <li class="breadcrumb-item active">Change full name</li>
+        </ol>
+    </nav>
+
+    <form action="#" th:action="@{/users/profile/username}" th:object="${fullName}" method="post">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" class="form-control" id="firstName" maxlength="64" required th:field="*{firstName}">
+        </div>
+        <div class="mb-3">
+            <label for="middleName" class="form-label">Middle name (optional)</label>
+            <input type="text" class="form-control" id="middleName" maxlength="64" th:field="*{middleName}">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="lastName" maxlength="64" required th:field="*{lastName}">
+        </div>
+        <a class="btn btn-outline-primary" th:href="@{/users/profile}">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>

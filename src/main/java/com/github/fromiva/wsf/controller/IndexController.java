@@ -14,6 +14,6 @@ public class IndexController {
      */
     @GetMapping
     public String getDashboardPage() {
-        return "redirect:dashboard";
+        return "redirect:folders";
     }
 }

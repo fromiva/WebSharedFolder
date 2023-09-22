@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body class="bg-light-subtle my-5">
+<main class="container p-0">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form class="m-0 px-4 py-3 border border-1 border-secondary-subtle bg-light"method="post" th:action="@{/users/signup}" th:object="${user}">
+                <h1 class="h3 mb-3 fw-normal">Registration form</h1>
+                <div th:replace="~{template :: alert}"></div>
+
+                <div class="mx-0 mb-3">
+                    <label for="firstName" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" maxlength="64" required th:field="*{firstName}"/>
+                </div>
+                <div class="mx-0 mb-3">
+                    <label for="middleName" class="form-label">Middle name (optional)</label>
+                    <input type="text" class="form-control" id="middleName" name="middleName" maxlength="64" th:field="*{middleName}"/>
+                </div>
+                <div class="mx-0 mb-3">
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" maxlength="64" required th:field="*{lastName}"/>
+                </div>
+
+                <div class="mx-0 mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" maxlength="256" required th:field="*{email}"/>
+                </div>
+                <div class="mx-0 my-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="" required th:field="*{password}"/>
+                </div>
+                <div class="mx-0 my-3">
+                    <label for="passwordConfirm" class="form-label">Password (confirm)</label>
+                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Password (confirm)" required/>
+                </div>
+                <div class="mx-0 my-3">
+                    <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+                </div>
+                <div class="mx-0 my-3">
+                    <a class="btn btn-outline-primary w-100 py-2" href="/users/login">Have an account? Just login...</a>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+</body>
+</html>

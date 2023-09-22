@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+            <li class="breadcrumb-item"><a href="/admin/users">User list</a></li>
+            <li class="breadcrumb-item active">
+                <span th:remove="tag" th:text="'User #'+${user.id}+': '"></span>
+                <span th:remove="tag" th:text="${user.firstName}"></span>
+                <span th:remove="tag" th:if="${user.middleName}" th:text="' '+${user.middleName}"></span>
+                <span th:remove="tag" th:text="' '+${user.lastName}"></span>
+                <span th:remove="tag" th:text="' ('+${user.email}+')'"></span>
+            </li>
+        </ol>
+    </nav>
+
+    <form action="#" th:action="@{/admin/users}" th:object="${user}" method="post">
+        <div hidden="hidden">
+            <label for="id">User ID</label>
+            <input type="text" class="form-control" id="id" th:field="*{id}">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="enabled" th:field="*{enabled}">
+            <label class="form-check-label" for="enabled">Enabled</label>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="non-expired" th:field="*{accountNonExpired}">
+            <label class="form-check-label" for="non-expired">Non-expired</label>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="non-locked" th:field="*{accountNonLocked}">
+            <label class="form-check-label" for="non-locked">Non-locked</label>
+        </div>
+        <div class="mb-3">
+            <label for="role">User security role</label>
+            <select id="role" class="form-select" th:field="*{userSecurityRole}">
+                <option th:each="role : ${roles}" th:value="${role}" th:text="${role.name()}">Role</option>
+            </select>
+        </div>
+        <a class="btn btn-outline-primary" th:href="@{/admin/users}">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>

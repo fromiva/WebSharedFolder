@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Mapper to support {@code FolderBreadcrumbDto} data transfer object. */
 @Component
 @AllArgsConstructor
 public class FolderBreadcrumbDtoMapper {
@@ -34,9 +35,7 @@ public class FolderBreadcrumbDtoMapper {
         StringBuilder cursor = new StringBuilder();
         for (String part : url.split("/")) {
             cursor.append("/").append(part);
-            result.add(new FolderBreadcrumbDto(
-                    encoder.decode(part),
-                    encoder.encode(cursor.toString())));
+            result.add(toDto(encoder.decode(part), cursor.toString()));
         }
         return result;
     }

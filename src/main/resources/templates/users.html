@@ -4,7 +4,32 @@
 <body>
 <nav th:replace="~{template :: navbar}"></nav>
 
-<main class="container"></main>
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <table class="table table-hover table-sm mb-4">
+        <thead class="table-light">
+        <tr>
+            <th scope="col" style="width: 35px;"></th>
+            <th scope="col" style="width: 50%;">Name</th>
+            <th scope="col" style="width: 50%;">Email</th>
+            <th scope="col" style="width: 35px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td><img src="/images/icons/person.svg" alt=""/></td>
+            <td>
+                <span th:remove="tag" th:text="${user.firstName}"></span>
+                <span th:remove="tag" th:if="${user.middleName}" th:text="' '+${user.middleName}"></span>
+                <span th:remove="tag" th:text="' '+${user.lastName}"></span>
+            </td>
+            <td><span th:text="${user.email()}"></span></td>
+            <td><img src="/images/icons/three-dots-vertical.svg" alt=""/></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
 
 <footer th:replace="~{template :: footer}"></footer>
 </body>
