@@ -22,15 +22,15 @@
         </thead>
         <tbody>
         <tr>
-            <td><b>Full name</b>  <a th:href="@{'~/user/profile/username'}">(edit)</a></td>
+            <td><b>Full name</b>  <a th:href="@{'~/users/profile/username'}">(edit)</a></td>
             <td><span th:remove="tag" th:text="${fullName.firstName}"></span> <span th:remove="tag" th:if="${fullName.middleName}" th:text="' '+${fullName.middleName}"></span><span th:remove="tag" th:text="' '+${fullName.lastName}"></span></td>
         </tr>
         <tr>
-            <td><b>Email</b>  <a th:href="@{'~/user/profile/email'}">(edit)</a></td>
+            <td><b>Email</b>  <a th:href="@{'~/users/profile/email'}">(edit)</a></td>
             <td th:text="${email}"></td>
         </tr>
         <tr>
-            <td><b>Password</b>  <a th:href="@{'~/user/profile/password'}">(edit)</a></td>
+            <td><b>Password</b>  <a th:href="@{'~/users/profile/password'}">(edit)</a></td>
             <td>(hidden)</td>
         </tr>
         </tbody>

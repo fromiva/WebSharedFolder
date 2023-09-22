@@ -1,6 +1,6 @@
 package com.github.fromiva.wsf.service;
 
-import com.github.fromiva.wsf.dto.UserNameDto;
+import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
 import com.github.fromiva.wsf.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 
     /** {@inheritDoc} */
     @Override
-    public boolean updateFullName(final Long id, final UserNameDto dto) {
+    public boolean updateFullName(final Long id, final UserInfoDto dto) {
         return userRepository.updateFullName(id,
                 dto.firstName(), dto.middleName(), dto.lastName()) > 0;
     }

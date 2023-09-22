@@ -1,6 +1,6 @@
 package com.github.fromiva.wsf.service;
 
-import com.github.fromiva.wsf.dto.UserNameDto;
+import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
 
 import java.util.List;
@@ -75,7 +75,7 @@ public interface UserService {
      * @param dto data transfer object with information to update
      * @return {@code true} if success or {@code false} otherwise
      */
-    boolean updateFullName(Long id, UserNameDto dto);
+    boolean updateFullName(Long id, UserInfoDto dto);
 
     /**
      * Updates a {@code User}'s email in the repository.

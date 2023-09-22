@@ -83,6 +83,6 @@ public class UserSecurityController {
         user.setUserSecurityRole(edited.getUserSecurityRole());
         userService.update(user);
         redirectAttributes.addFlashAttribute("alertSuccess", "User edited successfully");
-        return "redirect:admin/users";
+        return "redirect:/admin/users";
     }
 }

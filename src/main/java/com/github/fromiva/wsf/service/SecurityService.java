@@ -1,6 +1,6 @@
 package com.github.fromiva.wsf.service;
 
-import com.github.fromiva.wsf.dto.UserNameDto;
+import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
 import com.github.fromiva.wsf.util.IncorrectPasswordException;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +24,7 @@ public interface SecurityService extends UserDetailsService {
      * Retrieves and returns principal (logged-in user) full name for the current HTTP session.
      * @return data transfer object with principal full name for the current session
      */
-    UserNameDto getPrincipalName();
+    UserInfoDto getPrincipalName();
 
     /**
      * Retrieves the current principal entity from persistent storage and updates the principal
@@ -37,7 +37,7 @@ public interface SecurityService extends UserDetailsService {
      * @param dto data transfer object with principal full name
      * @return {@code true} if success or {@code false} otherwise
      */
-    boolean changePrincipalFullName(UserNameDto dto);
+    boolean changePrincipalFullName(UserInfoDto dto);
 
     /**
      * Updates a {@code User}'s email in the repository.

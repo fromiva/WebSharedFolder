@@ -30,26 +30,24 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/css/**", "/js/**", "/images/favicon.ico").permitAll())
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/user/login").permitAll())
+                        req.requestMatchers("/users/login").permitAll())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/images/**").authenticated())
-                .authorizeHttpRequests(req ->
-                        req.requestMatchers("/root", "/root/**").hasRole("ROOT_ADMIN"))
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/admin", "/admin/**")
                                 .hasAnyRole("ROOT_ADMIN", "ADMIN"))
                 .authorizeHttpRequests(req ->
                         req.anyRequest().authenticated())
                 .formLogin(req -> req
-                        .loginPage("/user/login")
-                        .loginProcessingUrl("/user/login")
+                        .loginPage("/users/login")
+                        .loginProcessingUrl("/users/login")
                         .defaultSuccessUrl("/", true)
-                        .failureUrl("/user/login?error")
+                        .failureUrl("/users/login?error")
                         .usernameParameter("email")
                         .passwordParameter("password"))
                 .logout(req -> req
-                        .logoutUrl("/user/logout")
-                        .logoutSuccessUrl("/user/login?logout")
+                        .logoutUrl("/users/logout")
+                        .logoutSuccessUrl("/users/login?logout")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .deleteCookies("JSESSIONID"))

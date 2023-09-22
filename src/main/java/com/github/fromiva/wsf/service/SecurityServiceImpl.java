@@ -1,7 +1,7 @@
 package com.github.fromiva.wsf.service;
 
-import com.github.fromiva.wsf.dto.UserNameDto;
-import com.github.fromiva.wsf.dto.UserNameDtoMapper;
+import com.github.fromiva.wsf.dto.UserInfoDto;
+import com.github.fromiva.wsf.dto.UserInfoDtoMapper;
 import com.github.fromiva.wsf.model.User;
 import com.github.fromiva.wsf.model.UserSecurityRole;
 import com.github.fromiva.wsf.util.IncorrectPasswordException;
@@ -22,8 +22,8 @@ public class SecurityServiceImpl implements SecurityService {
     /** Service to handle {@code User} specific business logic. */
     private final UserService userService;
 
-    /** Mapper to support {@code UserNameDto} data transfer object. */
-    private final UserNameDtoMapper userNameDtoMapper;
+    /** Mapper to support {@code UserInfoDto} data transfer object. */
+    private final UserInfoDtoMapper userNameDtoMapper;
 
     /** Password encoder to support password encryption / decryption Spring Security mechanism. */
     private final PasswordEncoder passwordEncoder;
@@ -49,7 +49,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     /** {@inheritDoc} */
     @Override
-    public UserNameDto getPrincipalName() {
+    public UserInfoDto getPrincipalName() {
         return userNameDtoMapper.toDto(getPrincipal());
     }
 
@@ -65,7 +65,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     /** {@inheritDoc} */
     @Override
-    public boolean changePrincipalFullName(final UserNameDto dto) {
+    public boolean changePrincipalFullName(final UserInfoDto dto) {
         boolean result = userService.updateFullName(getPrincipalId(), dto);
         refreshPrincipal();
         return result;

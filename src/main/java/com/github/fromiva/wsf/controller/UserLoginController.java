@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserLoginController {
 
     /**
@@ -17,6 +17,6 @@ public class UserLoginController {
     @GetMapping("login")
     public String getLogin(final Model model) {
         model.addAttribute("page", "Login");
-        return "login";
+        return "profile/login";
     }
 }

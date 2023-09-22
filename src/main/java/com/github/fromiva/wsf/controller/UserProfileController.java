@@ -1,6 +1,6 @@
 package com.github.fromiva.wsf.controller;
 
-import com.github.fromiva.wsf.dto.UserNameDto;
+import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.service.SecurityService;
 import com.github.fromiva.wsf.util.IncorrectPasswordException;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/user/profile")
+@RequestMapping("/users/profile")
 @AllArgsConstructor
 public class UserProfileController {
 
@@ -53,10 +53,10 @@ public class UserProfileController {
      */
     @PostMapping("/username")
     public String postUsernameChange(final RedirectAttributes redirectAttributes,
-                                     @ModelAttribute final UserNameDto dto) {
+                                     @ModelAttribute final UserInfoDto dto) {
         securityService.changePrincipalFullName(dto);
         redirectAttributes.addFlashAttribute("alertSuccess", "Full name changed successfully.");
-        return "redirect:/user/profile";
+        return "redirect:/users/profile";
     }
 
     /**
@@ -91,7 +91,7 @@ public class UserProfileController {
             return "profile/email";
         }
         redirectAttributes.addFlashAttribute("alertSuccess", "Email changed successfully.");
-        return "redirect:/user/profile";
+        return "redirect:/users/profile";
     }
 
     /**
@@ -130,7 +130,7 @@ public class UserProfileController {
             return "profile/password";
         }
         redirectAttributes.addFlashAttribute("alertSuccess", "Password changed successfully.");
-        return "redirect:/user/profile";
+        return "redirect:/users/profile";
     }
 
     /**
@@ -144,6 +144,6 @@ public class UserProfileController {
                                              final Exception exception) {
         redirectAttributes.addFlashAttribute("alertDanger", "Unexpected error: "
                 + exception.getClass().getSimpleName());
-        return "redirect:/user/profile";
+        return "redirect:/users/profile";
     }
 }
