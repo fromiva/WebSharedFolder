@@ -2,6 +2,7 @@ package com.github.fromiva.wsf.service;
 
 import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import com.github.fromiva.wsf.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllActive() {
         return userRepository.findAllActive();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public List<User> findAllByUserSecurityRole(final UserSecurityRole role) {
+        return userRepository.findAllByUserSecurityRole(role);
     }
 
     /** {@inheritDoc} */

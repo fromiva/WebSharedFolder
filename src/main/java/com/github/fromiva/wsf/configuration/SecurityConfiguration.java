@@ -32,6 +32,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/users/login", "/users/signup").permitAll())
                 .authorizeHttpRequests(req ->
+                        req.requestMatchers("/install").permitAll())
+                .authorizeHttpRequests(req ->
                         req.requestMatchers("/images/**").authenticated())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/admin", "/admin/**")

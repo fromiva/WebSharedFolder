@@ -85,4 +85,24 @@ public interface SecurityService extends UserDetailsService {
                        String lastName,
                        String email,
                        String password);
+
+    /**
+     * Creates a new user account with ROOT_ADMIN security rile.
+     * @param firstName user's first name
+     * @param middleName user's middle name
+     * @param lastName user's last name
+     * @param email user's email
+     * @param password user's password
+     */
+    void createNewSuperuser(String firstName,
+                            String middleName,
+                            String lastName,
+                            String email,
+                            String password);
+
+    /**
+     * Checks that application superuser is already configured.
+     * @return {@code true} if already configured, {@code false} otherwise
+     */
+    boolean isSuperuserConfigured();
 }

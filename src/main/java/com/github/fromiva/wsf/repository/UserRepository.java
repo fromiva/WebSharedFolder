@@ -1,6 +1,7 @@
 package com.github.fromiva.wsf.repository;
 
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -38,6 +39,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
             + " and u.credentialsNonExpired = true"
             + " and u.enabled = true")
     List<User> findAllActive();
+
+    /**
+     * Find all the users with specified security role.
+     * @param role to filter
+     * @return list of all the users with specified security role or empty list if nothing found
+     */
+    List<User> findAllByUserSecurityRole(UserSecurityRole role);
 
     /**
      * Updates the full name of the user with provided ID.

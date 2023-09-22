@@ -124,4 +124,25 @@ public class SecurityServiceImpl implements SecurityService {
                 UserSecurityRole.USER);
         userService.save(user);
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void createNewSuperuser(final String firstName,
+                                   final String middleName,
+                                   final String lastName,
+                                   final String email,
+                                   final String password) {
+        User user = new User(
+                0L, email, passwordEncoder.encode(password),
+                firstName, middleName, lastName,
+                true, true, true, true,
+                UserSecurityRole.ROOT_ADMIN);
+        userService.save(user);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isSuperuserConfigured() {
+        return !userService.findAllByUserSecurityRole(UserSecurityRole.ROOT_ADMIN).isEmpty();
+    }
 }

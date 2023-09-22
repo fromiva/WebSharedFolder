@@ -2,6 +2,7 @@ package com.github.fromiva.wsf.service;
 
 import com.github.fromiva.wsf.dto.UserInfoDto;
 import com.github.fromiva.wsf.model.User;
+import com.github.fromiva.wsf.model.UserSecurityRole;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,6 +55,13 @@ public interface UserService {
      * @return {@code List} with the search result or empty {@code List} if nothing found
      */
     List<User> findAllActive();
+
+    /**
+     * Find all the users with specified security role.
+     * @param role to filter
+     * @return list of all the users with specified security role or empty list if nothing found
+     */
+    List<User> findAllByUserSecurityRole(UserSecurityRole role);
 
     /**
      * Saves a {@code User} in the repository.
