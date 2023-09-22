@@ -45,9 +45,9 @@
             <ul class="dropdown-menu dropdown-menu-end text-small shadow">
                 <li class="m-3 p-0">
                     <strong>
-                        <span th:remove="tag" th:text="${user.firstName}"></span>
-                        <span th:remove="tag" th:if="${user.middleName}" th:text="' '+${user.middleName}"></span>
-                        <span th:remove="tag" th:text="' '+${user.lastName}"></span>
+                        <span th:remove="tag" th:text="${principal.firstName}"></span>
+                        <span th:remove="tag" th:if="${principal.middleName}" th:text="' '+${principal.middleName}"></span>
+                        <span th:remove="tag" th:text="' '+${principal.lastName}"></span>
                     </strong>
                     <br>
                     <span th:text="${email}">user@example.com</span>

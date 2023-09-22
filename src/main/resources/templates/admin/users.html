@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+            <li class="breadcrumb-item active">User list</li>
+        </ol>
+    </nav>
+
+    <table class="table table-hover table-sm mb-4">
+        <thead class="table-light">
+        <tr>
+            <th scope="col" style="width: 35px;"></th>
+            <th scope="col" style="width: 5%;">ID</th>
+            <th scope="col" style="width: 25%;">Name</th>
+            <th scope="col" style="width: 25%;">Email</th>
+            <th scope="col" style="width: 15%;">Security role</th>
+            <th scope="col" style="width: 10%;">Enabled</th>
+            <th scope="col" style="width: 10%;">Non-expired</th>
+            <th scope="col" style="width: 10%;">Non-locked</th>
+            <th scope="col" style="width: 35px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td><img src="/images/icons/person.svg" alt=""/></td>
+            <td th:text="${user.id}"></td>
+            <td>
+                <a th:href="@{'/admin/users/'+${user.id}}">
+                    <span th:remove="tag" th:text="${user.firstName}"></span>
+                    <span th:remove="tag" th:if="${user.middleName}" th:text="' '+${user.middleName}"></span>
+                    <span th:remove="tag" th:text="' '+${user.lastName}"></span>
+                </a>
+            </td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.userSecurityRole}"></td>
+            <td><img th:src="${user.enabled}? @{/images/icons/square-check.svg} : @{/images/icons/square.svg}" alt=""/></td>
+            <td><img th:src="${user.accountNonExpired}? @{/images/icons/square-check.svg} : @{/images/icons/square.svg}" alt=""/></td>
+            <td><img th:src="${user.accountNonLocked}? @{/images/icons/square-check.svg} : @{/images/icons/square.svg}" alt=""/></td>
+            <td><img src="/images/icons/three-dots-vertical.svg" alt=""/></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>
