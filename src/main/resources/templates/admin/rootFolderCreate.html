@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+            <li class="breadcrumb-item"><a href="/admin/roots">Root folder list</a></li>
+            <li class="breadcrumb-item active">Create new root folder</li>
+        </ol>
+    </nav>
+
+    <form action="#" th:action="@{/admin/roots/new}" th:object="${root}" method="post">
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required maxlength="64" th:field="*{name}">
+        </div>
+        <div class="mb-3">
+            <label for="path">Path</label>
+            <input type="text" class="form-control" id="path" required maxlength="4096" th:field="*{path}">
+        </div>
+        <div class="mb-3">
+            <label for="limit">Limit in bytes (or 0 if no limits)</label>
+            <input type="text" class="form-control" id="limit" required th:field="*{limit}">
+        </div>
+        <div class="mb-3">
+            <label for="description">Description (optional)</label>
+            <textarea type="text" class="form-control" rows="5" id="description" maxlength="4096" th:field="*{description}"></textarea>
+        </div>
+        <div class="mb-4">
+            <div class="row">
+                <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{/admin/roots}">Cancel</a></div>
+                <div class="col"><button type="submit" class="btn btn-primary w-100">Create</button></div>
+            </div>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>

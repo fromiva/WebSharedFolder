@@ -3,9 +3,12 @@ package com.github.fromiva.wsf.service;
 import com.github.fromiva.wsf.model.RootFolder;
 import com.github.fromiva.wsf.repository.RootFolderRepository;
 import com.github.fromiva.wsf.util.ElementNotFoundException;
+import com.github.fromiva.wsf.util.IncorrectPathException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 /** Implementation class to handle {@code RootFolder} specific business logic. */
@@ -15,6 +18,9 @@ public class RootFolderServiceImpl implements RootFolderService {
 
     /** Repository interface to process requests. */
     private final RootFolderRepository rootFolderRepository;
+
+    /** Security-specific service to support Spring Security business logic. */
+    private final SecurityService securityService;
 
     /** {@inheritDoc} */
     @Override
@@ -69,13 +75,30 @@ public class RootFolderServiceImpl implements RootFolderService {
 
     /** {@inheritDoc} */
     @Override
+    public RootFolder create(final String name,
+                             final String path,
+                             final Long limit,
+                             final String description) throws IncorrectPathException {
+        if (Files.notExists(Path.of(path))) {
+            throw new IncorrectPathException("Path '" + path + "' does not exist.");
+        }
+        return rootFolderRepository.save(new RootFolder(0L, name, path, limit, description,
+                securityService.getPrincipalId()));
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public RootFolder save(final RootFolder rootFolder) {
         return rootFolderRepository.save(rootFolder);
     }
 
     /** {@inheritDoc} */
     @Override
-    public RootFolder update(final RootFolder rootFolder) {
+    public RootFolder update(final RootFolder rootFolder) throws IncorrectPathException {
+        if (Files.notExists(Path.of(rootFolder.getPath()))) {
+            throw new IncorrectPathException("Path '" + rootFolder.getPath() + "' does not exist.");
+        }
+        rootFolder.setUserId(securityService.getPrincipalId());
         return rootFolderRepository.save(rootFolder);
     }
 

@@ -26,12 +26,15 @@ class RootFolderServiceImplTest {
     /** Mock root folder repository. */
     @Mock private RootFolderRepository rootFolderRepository;
 
+    /** Mock security service. */
+    @Mock private SecurityService securityService;
+
     /** Service under test. */
     private RootFolderService rootFolderService;
 
     @BeforeEach
     void beforeEach() {
-        rootFolderService = new RootFolderServiceImpl(rootFolderRepository);
+        rootFolderService = new RootFolderServiceImpl(rootFolderRepository, securityService);
     }
 
     @Test
