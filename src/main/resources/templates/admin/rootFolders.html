@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+            <li class="breadcrumb-item active">Root folder list</li>
+        </ol>
+    </nav>
+
+    <div class="mb-4">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="col btn-group w-100" role="group">
+                    <a class="btn btn-outline-primary w-100" href="/admin/roots/new">Create</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-hover table-sm mb-4">
+        <thead class="table-light">
+        <tr>
+            <th scope="col" style="width: 35px;"></th>
+            <th scope="col" style="width: 5%;">ID</th>
+            <th scope="col" style="width: 25%;">Name</th>
+            <th scope="col" style="width: 50%;">Path</th>
+            <th scope="col" style="width: 20%;">Limit</th>
+            <th scope="col" style="width: 35px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="folder : ${folders}">
+            <td><img src="/images/icons/files/folder2.svg" alt=""/></td>
+            <td th:text="${folder.id}"></td>
+            <td><a th:href="@{'/admin/roots/'+${folder.id}}" th:text="${folder.name}"></a></td>
+            <td th:text="${folder.path}"></td>
+            <td th:text="${folder.limit}"></td>
+            <td><img src="/images/icons/three-dots-vertical.svg" alt=""/></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>

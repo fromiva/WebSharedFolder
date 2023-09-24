@@ -2,6 +2,7 @@ package com.github.fromiva.wsf.service;
 
 import com.github.fromiva.wsf.model.RootFolder;
 import com.github.fromiva.wsf.util.ElementNotFoundException;
+import com.github.fromiva.wsf.util.IncorrectPathException;
 
 import java.util.List;
 
@@ -66,6 +67,18 @@ public interface RootFolderService {
     List<RootFolder> getAll();
 
     /**
+     * Creates a new {@code RootFolder} in the repository.
+     * @param name root folder name to create
+     * @param path file system folder path to map to root folder
+     * @param limit folder size limit in bytes or zero if no limits
+     * @param description root folder description
+     * @return created {@code RootFolder} entity with the actual ID
+     * @throws IncorrectPathException when {@code rootFolder} contains a path that doesn't exist
+     */
+    RootFolder create(String name, String path, Long limit, String description)
+            throws IncorrectPathException;
+
+    /**
      * Saves a {@code RootFolder} in the repository.
      * @param rootFolder entity to save
      * @return original {@code RootFolder} object with the actual ID
@@ -76,8 +89,9 @@ public interface RootFolderService {
      * Updates a {@code RootFolder} in the repository.
      * @param rootFolder entity to update
      * @return {@code true} if success or {@code false} otherwise
+     * @throws IncorrectPathException when {@code rootFolder} contains a path that doesn't exist
      */
-    RootFolder update(RootFolder rootFolder);
+    RootFolder update(RootFolder rootFolder) throws IncorrectPathException;
 
     /**
      * Removes a {@code RootFolder} with provided ID from the repository.
