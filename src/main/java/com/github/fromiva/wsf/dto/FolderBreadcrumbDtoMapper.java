@@ -35,7 +35,7 @@ public class FolderBreadcrumbDtoMapper {
         StringBuilder cursor = new StringBuilder();
         for (String part : url.split("/")) {
             cursor.append("/").append(part);
-            result.add(toDto(encoder.decode(part), cursor.toString()));
+            result.add(toDto(encoder.decode(part), encoder.encode(cursor.toString())));
         }
         return result;
     }

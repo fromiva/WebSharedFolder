@@ -33,7 +33,7 @@
                 <img th:if="${item.directory}" src="/images/icons/files/folder2.svg" alt=""/>
                 <img th:if="${item.file}" src="/images/icons/files/file-earmark.svg" alt=""/>
             </td>
-            <td>
+            <td class="text-break">
                 <a th:if="${item.directory}" th:text="${item.name()}" th:href="@{'~/folders/'+${item.url()}}">Item name</a>
                 <span th:if="${item.file}" th:text="${item.name()}"></span>
             </td>
@@ -42,7 +42,10 @@
                 <span th:if="${item.directory}">folder</span>
                 <span th:if="${item.file}" th:text="${item.extension()}"></span>
             </td>
-            <td><img src="/images/icons/three-dots-vertical.svg" alt=""/></td>
+            <td>
+                <th:block th:if="${item.directory}"><img src="/images/icons/three-dots-vertical.svg" alt=""/></th:block>
+                <th:block th:if="${item.file}"><a th:href="@{'~/download/'+${item.url()}}"><img src="/images/icons/download.svg" alt=""/></a></th:block>
+            </td>
         </tr>
         </tbody>
     </table>
