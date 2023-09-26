@@ -15,18 +15,18 @@
             <li th:each="crumb : ${breadcrumbs}" class="breadcrumb-item">
                 <a th:text="${crumb.title()}" th:href="@{'~/folders'+${crumb.url()}}">Item</a>
             </li>
-            <li class="breadcrumb-item active">Upload files</li>
+            <li class="breadcrumb-item active">Create folder</li>
         </ol>
     </nav>
 
-    <form class="my-5" action="#" th:action="@{'~/upload/'+${url}}" method="post" enctype="multipart/form-data">
+    <form class="my-5" action="#" th:action="@{'~/api/folders/create/'+${url}}" method="post">
         <div class="mb-5">
-            <label for="files" class="form-label">Select files (one or more)</label>
-            <input class="form-control" type="file" id="files" name="files" multiple required autofocus />
+            <label for="name" class="form-label">Folder name</label>
+            <input class="form-control" type="text" id="name" name="name" required autofocus />
         </div>
         <div class="row mb-5">
             <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{'~/folders/'+${url}}">Cancel</a></div>
-            <div class="col"><button type="submit" class="btn btn-primary w-100">Upload</button></div>
+            <div class="col"><button type="submit" class="btn btn-primary w-100">Create</button></div>
         </div>
     </form>
 </main>

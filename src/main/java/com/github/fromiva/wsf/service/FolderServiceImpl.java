@@ -28,4 +28,12 @@ public class FolderServiceImpl implements FolderService {
         RootFolder rootFolder = rootFolderService.getByName(rootAlias);
         return folderRepository.getContent(Path.of(rootFolder.getPath()), rootAlias, relative);
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void create(final String rootAlias, final String relative, final String name)
+            throws IOException, ElementNotFoundException {
+        Path root = Path.of(rootFolderService.getByName(rootAlias).getPath());
+        folderRepository.create(root, relative, name);
+    }
 }

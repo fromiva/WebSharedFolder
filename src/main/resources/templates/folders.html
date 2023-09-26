@@ -22,14 +22,14 @@
         <div class="row">
             <div class="col input-group">
                 <input type="text" class="form-control" placeholder="Filter in folder" id="filter">
-                <button type="button" class="btn btn-light" id="button-filter" onclick="alert('Filter under development')"><img src="/images/icons/search.svg" alt=""/></button>
+                <button type="button" title="Filter folder content" class="btn btn-light" id="button-filter" onclick="alert('Filter under development')"><img src="/images/icons/search.svg" alt=""/></button>
             </div>
             <div class="col btn-group">
-                <button type="button" class="btn btn-light" onclick="alert('Share link under development')"><img src="/images/icons/share.svg" alt=""/></button>
-                <button type="button" class="btn btn-light" onclick="alert('Bookmark link under development')"><img src="/images/icons/bookmark.svg" alt=""/></button>
-                <button type="button" class="btn btn-light" onclick="alert('Create folder under development')"><img src="/images/icons/folder-plus.svg" alt=""/></button>
-                <a type="button" class="btn btn-light"  th:href="@{'~/upload/'+${url}}"><img src="/images/icons/upload.svg" alt=""/></a>
-                <button type="button" class="btn btn-light" onclick="alert('View settings under development')"><img src="/images/icons/gear.svg" alt=""/></button>
+                <button type="button" title="Copy folder URL" class="btn btn-light" onclick="alert('Share link under development')"><img src="/images/icons/share.svg" alt=""/></button>
+                <button type="button" title="Bookmark folder" class="btn btn-light" onclick="alert('Bookmark link under development')"><img src="/images/icons/bookmark.svg" alt=""/></button>
+                <a class="btn btn-light" title="Create new folder" th:href="@{'~/api/folders/create/'+${url}}"><img src="/images/icons/folder-plus.svg" alt=""/></a>
+                <a class="btn btn-light" title="Upload files" th:href="@{'~/upload/'+${url}}"><img src="/images/icons/upload.svg" alt=""/></a>
+                <button type="button" title="View settings" class="btn btn-light" onclick="alert('View settings under development')"><img src="/images/icons/gear.svg" alt=""/></button>
             </div>
         </div>
     </div>

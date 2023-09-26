@@ -21,4 +21,15 @@ public interface FolderRepository {
      */
     List<PathDto> getContent(Path rootPath, String rootAlias, String relative)
             throws IOException, ElementNotFoundException;
+
+    /**
+     * Creates a new file system folder.
+     * @param rootPath path of a root folder
+     * @param relative folder path relative to the {@code rootPath}
+     * @param name of the new folder
+     * @throws IOException if an I/O error occurs
+     * @throws ElementNotFoundException when relative address can't be found
+     */
+    void create(Path rootPath, String relative, String name)
+            throws IOException, ElementNotFoundException;
 }

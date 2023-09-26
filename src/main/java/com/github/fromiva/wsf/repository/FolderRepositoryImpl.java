@@ -40,4 +40,15 @@ public class FolderRepositoryImpl implements FolderRepository {
                     .toList();
         }
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void create(final Path rootPath, final String relative, final String name)
+            throws IOException, ElementNotFoundException {
+        Path folder = rootPath.resolve(relative);
+        if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+            throw new ElementNotFoundException();
+        }
+        Files.createDirectory(folder.resolve(name));
+    }
 }
