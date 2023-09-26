@@ -46,7 +46,7 @@ public class UserProfileController {
     }
 
     /**
-     * Handles request ro change fullname of the current principal (logged-in user).
+     * Handles request to change fullname of the current principal (logged-in user).
      * @param redirectAttributes Spring Web MVC utility class
      * @param dto new user fullname from edit form
      * @return redirection rule if request performed successfully

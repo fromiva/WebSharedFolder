@@ -28,7 +28,7 @@
                 <button type="button" class="btn btn-light" onclick="alert('Share link under development')"><img src="/images/icons/share.svg" alt=""/></button>
                 <button type="button" class="btn btn-light" onclick="alert('Bookmark link under development')"><img src="/images/icons/bookmark.svg" alt=""/></button>
                 <button type="button" class="btn btn-light" onclick="alert('Create folder under development')"><img src="/images/icons/folder-plus.svg" alt=""/></button>
-                <button type="button" class="btn btn-light" onclick="alert('Upload file under development')"><img src="/images/icons/upload.svg" alt=""/></button>
+                <a type="button" class="btn btn-light"  th:href="@{'~/upload/'+${url}}"><img src="/images/icons/upload.svg" alt=""/></a>
                 <button type="button" class="btn btn-light" onclick="alert('View settings under development')"><img src="/images/icons/gear.svg" alt=""/></button>
             </div>
         </div>

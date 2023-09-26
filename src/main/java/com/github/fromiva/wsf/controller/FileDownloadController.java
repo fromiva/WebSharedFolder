@@ -24,7 +24,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @AllArgsConstructor
 public class FileDownloadController {
 
-    /** {@code RootFolder} specific service. */
+    /** File download specific service. */
     private final FileDownloadService fileDownloadService;
 
     /**
