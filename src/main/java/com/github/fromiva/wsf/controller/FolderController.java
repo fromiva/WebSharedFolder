@@ -59,7 +59,7 @@ public class FolderController {
      * specified by root folder name and relative address.
      * @param model Spring Web MVC utility class
      * @param rootAlias name (alias) of a root folder
-     * @param relative folder path relative to the {@code rootAlias} encoded in URL format
+     * @param relative folder path relative to the {@code rootAlias} encoded in the URL format
      * @return page template name
      */
     @GetMapping("/{rootAlias}/{*relative}")
@@ -81,6 +81,7 @@ public class FolderController {
         if (content.isEmpty()) {
             model.addAttribute("alertInfo", "Folder has no content.");
         }
+        model.addAttribute("url", pathToUrlEncoder.encode(rootAlias + relative));
         model.addAttribute("items", content);
         model.addAttribute("breadcrumbs",
                 folderBreadcrumbDtoMapper.toDtoList(rootAlias + relative));

@@ -25,3 +25,8 @@ spring:
     drop-first: false
     change-log: classpath:db/changelog/changelog-main.yaml
     contexts: ${spring.profiles.active}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2GB
+      max-request-size: 10GB

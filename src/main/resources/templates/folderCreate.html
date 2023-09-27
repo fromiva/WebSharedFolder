@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{'~/folders'}" th:text="Folders">Item</a>
+            </li>
+            <li th:each="crumb : ${breadcrumbs}" class="breadcrumb-item">
+                <a th:text="${crumb.title()}" th:href="@{'~/folders'+${crumb.url()}}">Item</a>
+            </li>
+            <li class="breadcrumb-item active">Create folder</li>
+        </ol>
+    </nav>
+
+    <form class="my-5" action="#" th:action="@{'~/api/folders/create/'+${url}}" method="post">
+        <div class="mb-5">
+            <label for="name" class="form-label">Folder name</label>
+            <input class="form-control" type="text" id="name" name="name" required autofocus />
+        </div>
+        <div class="row mb-5">
+            <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{'~/folders/'+${url}}">Cancel</a></div>
+            <div class="col"><button type="submit" class="btn btn-primary w-100">Create</button></div>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>

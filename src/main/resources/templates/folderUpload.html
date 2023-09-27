@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{'~/folders'}" th:text="Folders">Item</a>
+            </li>
+            <li th:each="crumb : ${breadcrumbs}" class="breadcrumb-item">
+                <a th:text="${crumb.title()}" th:href="@{'~/folders'+${crumb.url()}}">Item</a>
+            </li>
+            <li class="breadcrumb-item active">Upload files</li>
+        </ol>
+    </nav>
+
+    <form class="my-5" action="#" th:action="@{'~/upload/'+${url}}" method="post" enctype="multipart/form-data">
+        <div class="mb-5">
+            <label for="files" class="form-label">Select files (one or more)</label>
+            <input class="form-control" type="file" id="files" name="files" multiple required autofocus />
+        </div>
+        <div class="row mb-5">
+            <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{'~/folders/'+${url}}">Cancel</a></div>
+            <div class="col"><button type="submit" class="btn btn-primary w-100">Upload</button></div>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>
