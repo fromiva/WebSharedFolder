@@ -7,6 +7,8 @@ wsf:
     settings:
       filesystem:
         sorting: pathByTypeAscComparator, pathByNameAscComparator
+    security:
+      registration-confirm: true
 spring:
   application:
     name: ${wsf.application.name}

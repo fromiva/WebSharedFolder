@@ -5,7 +5,7 @@ import com.github.fromiva.wsf.dto.UserInfoDtoMapper;
 import com.github.fromiva.wsf.model.User;
 import com.github.fromiva.wsf.model.UserSecurityRole;
 import com.github.fromiva.wsf.util.IncorrectPasswordException;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 /** Implementation class to handle security-specific business logic. */
 @Service
-@AllArgsConstructor
 public class SecurityServiceImpl implements SecurityService {
 
     /** Service to handle {@code User} specific business logic. */
@@ -27,6 +26,28 @@ public class SecurityServiceImpl implements SecurityService {
 
     /** Password encoder to support password encryption / decryption Spring Security mechanism. */
     private final PasswordEncoder passwordEncoder;
+
+    /** Enables / disables auto activation of the new user's account. */
+    private final boolean confirmRegistration;
+
+    /**
+     * All arguments constructor.
+     * @param userService service bean to handle {@code User} specific business logic
+     * @param userNameDtoMapper mapper bean to support {@code UserInfoDto} data transfer object
+     * @param passwordEncoder password encoder bean to support password encryption / decryption
+     * @param confirmRegistration flag to confirm activation of the new user's account,
+     *                            value from application properties file
+     */
+    public SecurityServiceImpl(final UserService userService,
+                               final UserInfoDtoMapper userNameDtoMapper,
+                               final PasswordEncoder passwordEncoder,
+                               @Value("${wsf.application.security.registration-confirm}")
+                               final boolean confirmRegistration) {
+        this.userService = userService;
+        this.userNameDtoMapper = userNameDtoMapper;
+        this.passwordEncoder = passwordEncoder;
+        this.confirmRegistration = confirmRegistration;
+    }
 
     /** {@inheritDoc} */
     @Override
@@ -120,7 +141,7 @@ public class SecurityServiceImpl implements SecurityService {
         User user = new User(
                 0L, email, passwordEncoder.encode(password),
                 firstName, middleName, lastName,
-                true, true, true, true,
+                true, true, true, !confirmRegistration,
                 UserSecurityRole.USER);
         userService.save(user);
     }

@@ -18,7 +18,7 @@
     <form action="#" th:action="@{/admin/roots/new}" th:object="${root}" method="post">
         <div class="mb-3">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required maxlength="64" th:field="*{name}">
+            <input type="text" class="form-control" id="name" required autofocus maxlength="64" th:field="*{name}">
         </div>
         <div class="mb-3">
             <label for="path">Path</label>

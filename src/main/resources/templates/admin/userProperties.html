@@ -44,8 +44,12 @@
                 <option th:each="role : ${roles}" th:value="${role}" th:text="${role.name()}">Role</option>
             </select>
         </div>
-        <a class="btn btn-outline-primary" th:href="@{/admin/users}">Cancel</a>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-4">
+            <div class="row">
+                <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{/admin/users}">Cancel</a></div>
+                <div class="col"><button type="submit" class="btn btn-primary w-100">Save</button></div>
+            </div>
+        </div>
     </form>
 </main>
 
