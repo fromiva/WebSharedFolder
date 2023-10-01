@@ -39,6 +39,9 @@ public class SecurityConfiguration {
                         req.requestMatchers("/admin", "/admin/**")
                                 .hasAnyRole("ROOT_ADMIN", "ADMIN"))
                 .authorizeHttpRequests(req ->
+                        req.requestMatchers("/actuator", "/actuator/**")
+                                .hasAnyRole("ROOT_ADMIN", "ADMIN"))
+                .authorizeHttpRequests(req ->
                         req.anyRequest().authenticated())
                 .formLogin(req -> req
                         .loginPage("/users/login")

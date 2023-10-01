@@ -3,6 +3,8 @@ spring:
     url: jdbc:hsqldb:file:data/data
     username: sa
     password:
+  devtools:
+    add-properties: false
 
 logging:
   level:

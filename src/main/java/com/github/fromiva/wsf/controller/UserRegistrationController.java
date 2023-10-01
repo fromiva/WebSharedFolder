@@ -63,7 +63,7 @@ public class UserRegistrationController {
             return "profile/signup";
         }
         redirectAttributes.addFlashAttribute("alertSuccess",
-                "You are registered successfully and may login.");
+                "You are registered successfully and may login after your account activation.");
         return "redirect:login";
     }
 }

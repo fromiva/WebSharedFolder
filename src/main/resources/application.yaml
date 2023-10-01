@@ -7,6 +7,8 @@ wsf:
     settings:
       filesystem:
         sorting: pathByTypeAscComparator, pathByNameAscComparator
+    security:
+      registration-confirm: true
 spring:
   application:
     name: ${wsf.application.name}
@@ -30,3 +32,11 @@ spring:
       enabled: true
       max-file-size: 2GB
       max-request-size: 10GB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: shutdown
+  endpoint:
+    shutdown:
+      enabled: true
