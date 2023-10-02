@@ -79,12 +79,7 @@ http://<your domain name or IP>/install
 
 After the superuser configured, the 'install' page is no longer available to access.
 
-To shut down the application, it is necessary to send a POST request to the
-Spring Actuator Shutdown Endpoint (require an admin privileges).
-
-```text
-http://<your domain name or IP>/actuator/shutdown
-```
+To shut down the application, use the application admin panel dedicated page.
 
 ### Update
 

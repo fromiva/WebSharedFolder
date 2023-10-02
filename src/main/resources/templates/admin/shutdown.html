@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{template :: head}"></head>
+<body>
+<nav th:replace="~{template :: navbar}"></nav>
+
+<main class="container">
+    <div th:replace="~{template :: alert}"></div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+            <li class="breadcrumb-item active">Create new root folder</li>
+        </ol>
+    </nav>
+    
+    <script>
+        function shutdown() {
+            const request = new XMLHttpRequest();
+            const url = "/actuator/shutdown";
+            request.open("POST", url);
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            request.send();
+        }
+    </script>
+
+    <div class="mb-4">
+        <div class="row">
+            <div class="col"><a class="btn btn-outline-primary w-100" th:href="@{/admin}">Cancel</a></div>
+            <div class="col"><button type="submit" class="btn btn-primary w-100" onclick="shutdown()">Shut down the application</button></div>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="~{template :: footer}"></footer>
+</body>
+</html>
