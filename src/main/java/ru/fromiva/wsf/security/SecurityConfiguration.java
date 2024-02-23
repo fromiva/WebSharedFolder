@@ -1,7 +1,8 @@
-package ru.fromiva.wsf.configuration;
+package ru.fromiva.wsf.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -65,6 +66,7 @@ public class SecurityConfiguration {
      * @return delegating password encoder with default mappings
      */
     @Bean
+    @Primary
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }

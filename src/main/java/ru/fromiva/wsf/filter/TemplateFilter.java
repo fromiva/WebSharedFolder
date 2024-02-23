@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.configuration.ApplicationProperties;
-import ru.fromiva.wsf.service.SecurityService;
+import ru.fromiva.wsf.ApplicationProperties;
+import ru.fromiva.wsf.security.SecurityService;
 
 import java.io.IOException;
 import java.util.Set;

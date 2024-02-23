@@ -1,7 +1,7 @@
 package ru.fromiva.wsf.dto;
 
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.model.User;
+import ru.fromiva.wsf.security.User;
 
 /** Mapper to support {@code UserInfoDto} data transfer object. */
 @Component

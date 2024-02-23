@@ -1,7 +1,6 @@
-package ru.fromiva.wsf.util;
+package ru.fromiva.wsf.security;
 
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.model.User;
 
 import java.util.Comparator;
 

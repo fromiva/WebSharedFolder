@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.model;
+package ru.fromiva.wsf.security;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

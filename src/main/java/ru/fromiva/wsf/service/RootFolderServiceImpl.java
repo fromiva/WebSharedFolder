@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.fromiva.wsf.model.RootFolder;
 import ru.fromiva.wsf.repository.RootFolderRepository;
+import ru.fromiva.wsf.security.SecurityService;
 import ru.fromiva.wsf.util.ElementNotFoundException;
 import ru.fromiva.wsf.util.IncorrectPathException;
 

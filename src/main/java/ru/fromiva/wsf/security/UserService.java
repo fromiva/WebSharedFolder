@@ -1,8 +1,6 @@
-package ru.fromiva.wsf.service;
+package ru.fromiva.wsf.security;
 
 import ru.fromiva.wsf.dto.UserInfoDto;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
 
 import java.util.List;
 import java.util.Optional;

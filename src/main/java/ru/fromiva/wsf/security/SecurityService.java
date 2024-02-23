@@ -1,9 +1,7 @@
-package ru.fromiva.wsf.service;
+package ru.fromiva.wsf.security;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import ru.fromiva.wsf.dto.UserInfoDto;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.util.IncorrectPasswordException;
 
 /** Interface to handle security-specific business logic. */
 public interface SecurityService extends UserDetailsService {

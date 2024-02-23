@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ru.fromiva.wsf.model.RootFolder;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
+import ru.fromiva.wsf.security.User;
+import ru.fromiva.wsf.security.UserRepository;
+import ru.fromiva.wsf.security.UserSecurityRole;
 
 import java.util.Optional;
 

@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.fromiva.wsf.model.RootFolder;
 import ru.fromiva.wsf.repository.RootFolderRepository;
+import ru.fromiva.wsf.security.SecurityService;
 import ru.fromiva.wsf.util.ElementNotFoundException;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.repository;
+package ru.fromiva.wsf.security;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
 
 import java.util.Optional;
 

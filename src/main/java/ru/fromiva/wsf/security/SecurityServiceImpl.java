@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.service;
+package ru.fromiva.wsf.security;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,12 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.fromiva.wsf.configuration.SecurityProperties;
 import ru.fromiva.wsf.dto.UserInfoDto;
 import ru.fromiva.wsf.dto.UserInfoDtoMapper;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
-import ru.fromiva.wsf.util.IncorrectPasswordException;
 
 /** Implementation class to handle security-specific business logic. */
 @Service

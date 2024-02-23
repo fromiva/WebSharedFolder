@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
-import ru.fromiva.wsf.service.UserService;
-import ru.fromiva.wsf.util.UserByNameAscComparator;
+import ru.fromiva.wsf.security.User;
+import ru.fromiva.wsf.security.UserByNameAscComparator;
+import ru.fromiva.wsf.security.UserSecurityRole;
+import ru.fromiva.wsf.security.UserService;
 
 import java.util.Optional;
 

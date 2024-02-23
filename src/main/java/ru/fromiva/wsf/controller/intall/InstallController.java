@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.service.SecurityService;
+import ru.fromiva.wsf.security.SecurityService;
+import ru.fromiva.wsf.security.User;
 
 @Controller
 @RequestMapping("install")

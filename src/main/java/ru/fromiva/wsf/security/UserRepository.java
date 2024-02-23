@@ -1,12 +1,10 @@
-package ru.fromiva.wsf.repository;
+package ru.fromiva.wsf.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.fromiva.wsf.model.User;
-import ru.fromiva.wsf.model.UserSecurityRole;
 
 import java.util.List;
 import java.util.Optional;

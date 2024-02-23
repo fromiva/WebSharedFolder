@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.model;
+package ru.fromiva.wsf.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
