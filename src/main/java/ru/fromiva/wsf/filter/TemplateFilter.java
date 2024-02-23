@@ -6,9 +6,10 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.configuration.ApplicationInfo;
+import ru.fromiva.wsf.configuration.ApplicationProperties;
 import ru.fromiva.wsf.service.SecurityService;
 
 import java.io.IOException;
@@ -21,10 +22,11 @@ import java.util.Set;
 @Component
 @Order(1)
 @RequiredArgsConstructor
+@EnableConfigurationProperties(ApplicationProperties.class)
 public class TemplateFilter extends HttpFilter {
 
     /** In-memory basic application information holder. */
-    private final ApplicationInfo applicationInfo;
+    private final ApplicationProperties applicationProperties;
 
     /** Security-specific service to support Spring Security business logic. */
     private final SecurityService securityService;
@@ -52,7 +54,7 @@ public class TemplateFilter extends HttpFilter {
             request.setAttribute("admin", securityService.isPrincipalAnAdmin());
             request.setAttribute("rootAdmin", securityService.isPrincipalARootAdmin());
         }
-        request.setAttribute("app", applicationInfo);
+        request.setAttribute("app", applicationProperties);
         chain.doFilter(request, response);
     }
 
