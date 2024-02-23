@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.fromiva.wsf.security.SecurityService;
-import ru.fromiva.wsf.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
 
 import java.util.Optional;
 

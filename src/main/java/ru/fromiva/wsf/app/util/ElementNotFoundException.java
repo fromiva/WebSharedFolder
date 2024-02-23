@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.util;
+package ru.fromiva.wsf.app.util;
 
 import lombok.experimental.StandardException;
 

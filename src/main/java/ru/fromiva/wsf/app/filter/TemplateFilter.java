@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.filter;
+package ru.fromiva.wsf.app.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.ApplicationProperties;
+import ru.fromiva.wsf.app.ApplicationProperties;
 import ru.fromiva.wsf.security.SecurityService;
 
 import java.io.IOException;

@@ -2,7 +2,7 @@ package ru.fromiva.wsf.folder;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fromiva.wsf.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
 
 import java.io.IOException;
 import java.nio.file.Path;

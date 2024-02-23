@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.AnnotatedElementContext;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.api.io.TempDirFactory;
-import ru.fromiva.wsf.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;

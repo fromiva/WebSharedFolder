@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.controller.admin;
+package ru.fromiva.wsf.app.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

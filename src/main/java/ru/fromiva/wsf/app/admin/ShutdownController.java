@@ -1,19 +1,19 @@
-package ru.fromiva.wsf.controller;
+package ru.fromiva.wsf.app.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/bookmarks")
-public class BookmarksController {
+@RequestMapping("admin/shutdown")
+public class ShutdownController {
 
     /**
-     * Returns template name.
+     * Returns template name with the HTML form to shut down the application.
      * @return page template name
      */
     @GetMapping
-    public String getBookmarksPage() {
-        return "bookmarks";
+    public String getShutdown() {
+        return "admin/shutdown";
     }
 }

@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.controller.admin;
+package ru.fromiva.wsf.app.admin;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.fromiva.wsf.folder.IncorrectPathException;
 import ru.fromiva.wsf.folder.RootFolder;
 import ru.fromiva.wsf.folder.RootFolderService;
-import ru.fromiva.wsf.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
 
 @Controller
 @RequestMapping("admin/roots")

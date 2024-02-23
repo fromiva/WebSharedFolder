@@ -2,7 +2,7 @@ package ru.fromiva.wsf.folder;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.fromiva.wsf.util.Encoder;
+import ru.fromiva.wsf.app.util.Encoder;
 
 import java.io.IOException;
 import java.nio.file.Files;

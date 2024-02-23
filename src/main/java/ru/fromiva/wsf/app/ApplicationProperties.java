@@ -1,4 +1,4 @@
-package ru.fromiva.wsf;
+package ru.fromiva.wsf.app;
 
 import lombok.Getter;
 import lombok.Setter;

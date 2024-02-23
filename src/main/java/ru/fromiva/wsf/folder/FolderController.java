@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.fromiva.wsf.util.ElementNotFoundException;
-import ru.fromiva.wsf.util.Encoder;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.Encoder;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package ru.fromiva.wsf.folder;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import ru.fromiva.wsf.util.Encoder;
+import ru.fromiva.wsf.app.util.Encoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

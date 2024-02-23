@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.controller.intall;
+package ru.fromiva.wsf.app.intall;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

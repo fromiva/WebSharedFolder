@@ -1,19 +1,19 @@
-package ru.fromiva.wsf.controller.admin;
+package ru.fromiva.wsf.help;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("admin/shutdown")
-public class ShutdownController {
+@RequestMapping("/help")
+public class HelpController {
 
     /**
-     * Returns template name with the HTML form to shut down the application.
+     * Returns template name.
      * @return page template name
      */
     @GetMapping
-    public String getShutdown() {
-        return "admin/shutdown";
+    public String getHelpPage() {
+        return "help";
     }
 }

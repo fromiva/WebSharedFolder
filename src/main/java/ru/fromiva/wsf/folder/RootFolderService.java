@@ -1,6 +1,6 @@
 package ru.fromiva.wsf.folder;
 
-import ru.fromiva.wsf.util.ElementNotFoundException;
+import ru.fromiva.wsf.app.util.ElementNotFoundException;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.fromiva.wsf.controller;
+package ru.fromiva.wsf.search;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
