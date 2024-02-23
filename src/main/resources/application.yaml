@@ -1,10 +1,9 @@
+app.security.registration-confirmation: true
 wsf:
   application:
     settings:
       filesystem:
         sorting: pathByTypeAscComparator, pathByNameAscComparator
-    security:
-      registration-confirm: true
 spring:
   application:
     name: Web Shared Folder
