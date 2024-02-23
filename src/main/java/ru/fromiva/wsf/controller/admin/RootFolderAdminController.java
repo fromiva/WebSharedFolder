@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.fromiva.wsf.model.RootFolder;
-import ru.fromiva.wsf.service.RootFolderService;
+import ru.fromiva.wsf.folder.IncorrectPathException;
+import ru.fromiva.wsf.folder.RootFolder;
+import ru.fromiva.wsf.folder.RootFolderService;
 import ru.fromiva.wsf.util.ElementNotFoundException;
-import ru.fromiva.wsf.util.IncorrectPathException;
 
 @Controller
 @RequestMapping("admin/roots")

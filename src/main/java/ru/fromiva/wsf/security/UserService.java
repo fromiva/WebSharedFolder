@@ -1,7 +1,5 @@
 package ru.fromiva.wsf.security;
 
-import ru.fromiva.wsf.dto.UserInfoDto;
-
 import java.util.List;
 import java.util.Optional;
 

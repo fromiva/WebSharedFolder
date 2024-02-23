@@ -2,7 +2,6 @@ package ru.fromiva.wsf.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fromiva.wsf.dto.UserInfoDto;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,6 @@
 package ru.fromiva.wsf.security;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import ru.fromiva.wsf.dto.UserInfoDto;
 
 /** Interface to handle security-specific business logic. */
 public interface SecurityService extends UserDetailsService {
