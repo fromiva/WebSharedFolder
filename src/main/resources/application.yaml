@@ -1,17 +1,12 @@
+app.security.registration-confirmation: true
 wsf:
   application:
-    name: Web Shared Folder
-    version: 0.0.1-SNAPSHOT
-    license: GPLv3
-    url: https://github.com/fromiva/WebSharedFolder
     settings:
       filesystem:
         sorting: pathByTypeAscComparator, pathByNameAscComparator
-    security:
-      registration-confirm: true
 spring:
   application:
-    name: ${wsf.application.name}
+    name: Web Shared Folder
   profiles:
     default: production
   datasource:
