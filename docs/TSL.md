@@ -1,13 +1,13 @@
 # SSL / TSL encryption configuration
 
-> **Warning:** be careful with the private key of your public key certificate.
+> **Warning:** be careful with the private key of your public/private key certificate.
 > Do not disclose it to the other persons and do not provide access to it.
 
 The application is a Spring Boot Java web-application. To process HTTP and HTTPS
 requests, it uses an embedded Apache Tomcat web server. So, web traffic encryption
 configuration is a Spring Boot specific Tomcat configuration.
 
-Firstly, you need a public key certificate issued by a certification authority
+Firstly, you need a public/private key certificates issued by a certification authority
 for your domain name or a self-signed one.
 
 With Spring Boot, you can use keystore in PKCS12 (Public Key Cryptography Standards)
